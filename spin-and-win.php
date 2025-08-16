@@ -15,16 +15,19 @@
  * Domain Path:       /languages
  */
 
+// Exit if accessed directly.
 if (! defined('ABSPATH')) {
-    exit; // Exit if accessed directly.
+    exit;
 }
+
 
 // Define plugin constants
 define('SWN_DELUXE_VERSION', '1.0.0');
 define('SWN_DELUXE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SWN_DELUXE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-// Include core files
+
+// Include the core files required by the plugin.
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
