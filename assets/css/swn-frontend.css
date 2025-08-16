@@ -1,0 +1,20 @@
+.swn-wheel-container, .swn-wheel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#swn-spin-trigger {
+    border: 2px solid palevioletred;
+    border-radius: 5px;
+}
+
+#swn-message-area, #swn-message-area p  {
+    text-align: center;
+}
+
+#swn-pin-image {
+    width: 25px;
+    margin-bottom: -20px;
+}
+

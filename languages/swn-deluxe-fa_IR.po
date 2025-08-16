@@ -1,0 +1,317 @@
+# Copyright (C) 2025 Amin Salehizade
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spin and Win Deluxe 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/swn\n"
+"POT-Creation-Date: 2025-08-14T21:59:41+00:00\n"
+"PO-Revision-Date: 2025-08-15 01:34+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: swn-deluxe\n"
+
+#. Plugin Name of the plugin
+#: spin-and-win.php
+msgid "Spin and Win Deluxe"
+msgstr "گردونه شانس"
+
+#. Plugin URI of the plugin
+#: spin-and-win.php
+msgid "https://aminlog.ir/spin-and-win"
+msgstr ""
+
+#. Description of the plugin
+#: spin-and-win.php
+msgid "Engage users with a spin and win game for prizes."
+msgstr ""
+
+#. Author of the plugin
+#: spin-and-win.php
+msgid "Amin Salehizade"
+msgstr "امین صالحی زاده"
+
+#. Author URI of the plugin
+#: spin-and-win.php
+msgid "https://aminlog.ir"
+msgstr ""
+
+#: includes/class-swn-admin.php:24 includes/class-swn-admin.php:25
+msgid "Spin & Win"
+msgstr "گردونه شانس"
+
+#: includes/class-swn-admin.php:34 includes/class-swn-admin.php:35
+msgid "Prize Settings"
+msgstr "آیتم های گردونه"
+
+#: includes/class-swn-admin.php:42 includes/class-swn-admin.php:43
+msgid "Spin Logs"
+msgstr ""
+
+#: includes/class-swn-admin.php:50 includes/class-swn-admin.php:51
+msgid "Manual Spins"
+msgstr ""
+
+#: includes/class-swn-admin.php:58 includes/class-swn-admin.php:59
+msgid "Usage Conditions"
+msgstr ""
+
+#: includes/class-swn-admin.php:91
+msgid "Total probability for all prizes should ideally sum up to 100."
+msgstr "مجموع احتمالات برای همه جوایز باید برابر با 100 باشد."
+
+#: includes/class-swn-admin.php:103
+msgid "Spin & Win - Prize Settings"
+msgstr "تنظیمات جوایز"
+
+#: includes/class-swn-admin.php:117
+#, php-format
+msgid "Prize Segment %d"
+msgstr "آیتم %d"
+
+#: includes/class-swn-admin.php:119
+msgid "Prize Name:"
+msgstr "اسم جایزه"
+
+#: includes/class-swn-admin.php:123
+msgid "Prize Text on Wheel:"
+msgstr "عنوان نمایشی جایزه روی گردونه"
+
+#: includes/class-swn-admin.php:127
+msgid "Prize Type:"
+msgstr "نوع جایزه"
+
+#: includes/class-swn-admin.php:129
+msgid "Discount Coupon"
+msgstr "کد تخفیف"
+
+#: includes/class-swn-admin.php:130
+msgid "Credit"
+msgstr "اعتبار"
+
+#: includes/class-swn-admin.php:131
+msgid "Free Coffee Sample Box"
+msgstr "سمپل باکس رایگان"
+
+#: includes/class-swn-admin.php:135
+msgid "Prize Value:"
+msgstr "مقدار جایزه"
+
+#: includes/class-swn-admin.php:137
+msgid "E.g., Coupon Code, Credit Amount, Product ID."
+msgstr "درصد کد تخفیف یا مقدار اعتبار یا تعداد سمپل باکس"
+
+#: includes/class-swn-admin.php:140
+msgid "Probability (%):"
+msgstr "درصد احتمال"
+
+#: includes/class-swn-admin.php:144
+msgid "Segment Color:"
+msgstr "رنگ سگمنت گردونه"
+
+#: includes/class-swn-admin.php:147
+msgid "Remove Prize Segment"
+msgstr "حذف این آیتم"
+
+#: includes/class-swn-admin.php:151
+msgid "Add New Prize Segment"
+msgstr "اضافه کردن آیتم جدید"
+
+#: includes/class-swn-admin.php:170
+msgid "Spin & Win - Spin Logs"
+msgstr ""
+
+#: includes/class-swn-admin.php:174
+msgid "Log ID"
+msgstr ""
+
+#: includes/class-swn-admin.php:175
+msgid "User"
+msgstr ""
+
+#: includes/class-swn-admin.php:176
+msgid "Prize Won"
+msgstr ""
+
+#: includes/class-swn-admin.php:177
+msgid "Details"
+msgstr ""
+
+#: includes/class-swn-admin.php:178
+msgid "Timestamp"
+msgstr ""
+
+#: includes/class-swn-admin.php:189
+msgid "Unknown User"
+msgstr ""
+
+#: includes/class-swn-admin.php:197
+msgid "No spin logs found."
+msgstr ""
+
+#: includes/class-swn-admin.php:223
+msgid "Spin & Win - Manually Give Spins"
+msgstr ""
+
+#: includes/class-swn-admin.php:227
+msgid "User (ID, Email, or Username)"
+msgstr ""
+
+#: includes/class-swn-admin.php:231
+msgid "Number of Spins to Add/Set"
+msgstr ""
+
+#: includes/class-swn-admin.php:235
+msgid "Action"
+msgstr ""
+
+#: includes/class-swn-admin.php:238
+msgid "Add to Current Spins"
+msgstr ""
+
+#: includes/class-swn-admin.php:239
+msgid "Set Total Spins"
+msgstr ""
+
+#: includes/class-swn-admin.php:245
+msgid "Update User Spins"
+msgstr ""
+
+#: includes/class-swn-admin.php:247
+msgid "Current User Spins:"
+msgstr ""
+
+#: includes/class-swn-admin.php:256
+msgid "Spin & Win - Usage Conditions"
+msgstr ""
+
+#: includes/class-swn-admin.php:264
+msgid "Purchase Amount for Extra Spin ($)"
+msgstr ""
+
+#: includes/class-swn-admin.php:267
+msgid ""
+"A user gets an additional spin chance if their completed order total is "
+"equal to or greater than this amount. Requires WooCommerce."
+msgstr ""
+
+#: includes/class-swn-admin.php:282
+msgid "Insufficient permissions."
+msgstr ""
+
+#: includes/class-swn-admin.php:290
+msgid "User identifier cannot be empty."
+msgstr ""
+
+#: includes/class-swn-admin.php:305
+#, php-format
+msgid "User \"%s\" not found."
+msgstr ""
+
+#: includes/class-swn-admin.php:313
+msgid "Invalid action."
+msgstr ""
+
+#: includes/class-swn-admin.php:318
+#, php-format
+msgid "Successfully updated spins for user %s. New total: %d"
+msgstr ""
+
+#: includes/class-swn-ajax.php:25
+msgid "You must be logged in to spin."
+msgstr ""
+
+#: includes/class-swn-ajax.php:32 spin-and-win.php:115
+msgid "You have no spins left."
+msgstr "شانس دیگری برای چرخاندن گردونه ندارید."
+
+#: includes/class-swn-ajax.php:129
+#, php-format
+msgid "Coupon Code: %s <br> Use this to order free sample boxes."
+msgstr ""
+"کد تخفیف : %s <br> از این کد تخفیف برای سفارش رایگان سمپل باکس قهوه های "
+"دلخواه خود استفاده کنید."
+
+#: includes/class-swn-ajax.php:156 includes/class-swn-ajax.php:247
+msgid "Coupon prize (WooCommerce not active)."
+msgstr ""
+
+#: includes/class-swn-ajax.php:173
+#, php-format
+msgid "%d credits added to your account."
+msgstr "%d تومان به اعتبار خرید حساب شما اضافه شد."
+
+#: includes/class-swn-ajax.php:197
+#, php-format
+msgid "%d credits (manual processing needed)."
+msgstr ""
+
+#: includes/class-swn-ajax.php:221
+#, php-format
+msgid "Coupon Code: %s"
+msgstr "کد تخفیف : %s"
+
+#: includes/class-swn-ajax.php:254
+msgid "Better luck next time!"
+msgstr ""
+
+#: spin-and-win.php:113 templates/frontend/wheel-display.php:19
+msgid "Please log in to spin the wheel!"
+msgstr "برای چرخاندن گردونه ابتدا وارد حساب کاربری شوید."
+
+#: spin-and-win.php:114 templates/frontend/wheel-display.php:25
+#, php-format
+msgid "Remaining spin chances: %d"
+msgstr "شانس های باقیمانده : %d"
+
+#: spin-and-win.php:116
+#, php-format
+msgid "You won %s"
+msgstr "شما برنده %s شدید."
+
+#: spin-and-win.php:117
+msgid "..."
+msgstr ""
+
+#: templates/frontend/wheel-display.php:11
+msgid "Sorry, your browser doesn't support canvas. Please try another."
+msgstr ""
+"متاسفانه مرورگر شما از قابلیت Canvas پشتیبانی نمیکند. مرورگر دیگری را امتحان "
+"کنید."
+
+#: templates/frontend/wheel-display.php:13
+msgid "Spin the Wheel"
+msgstr ""
+
+#: templates/frontend/wheel-display.php:13
+msgid "Spin"
+msgstr "بچرخون"
+
+#: templates/frontend/wheel-display.php:20
+msgid "Login or Signup"
+msgstr "ورود یا ثبت نام"
+
+#, php-format
+#~ msgid "Congratulations! You won: %s"
+#~ msgstr "تبریک! شما برنده %s شدید."
+
+#, php-format
+#~ msgid "You have %d spin chance."
+#~ msgid_plural "You have %d spin chances."
+#~ msgstr[0] "شما %d شانس برای چرخاندن گردونه دارید."
+#~ msgstr[1] "شما %d شانس س برای چرخاندن گردونه دارید."
+
+#~ msgid "You have 1 spin chance."
+#~ msgstr "شما  1 شانس برای چرخاندن گردونه دارید."
+
+#, php-format
+#~ msgid "You have %d spin chances."
+#~ msgstr "شما %d شانس برای چرخاندن گردونه دارید."
+
+#~ msgid "Spinning..."
+#~ msgstr "در حال چرخش..."
