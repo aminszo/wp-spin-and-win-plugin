@@ -11,7 +11,7 @@ if (! defined('ABSPATH')) exit;
     </a>
 
     <hr class="wp-header-end">
-    
+
     <?php if (!empty($wheels)) : ?>
         <table class="wp-list-table widefat fixed striped">
             <thead>
@@ -35,10 +35,16 @@ if (! defined('ABSPATH')) exit;
                         <td><?php echo esc_html(ucfirst($wheel->status)); ?></td>
                         <td><?php echo esc_html($wheel->created_at); ?></td>
                         <td>
-                            <a href="<?php echo esc_url(admin_url('admin.php?page=swn-edit-wheel&id=' . intval($wheel->id))); ?>">
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=swn-edit-wheel&id=' . intval($wheel->id))); ?>"
+                                class="button">
                                 <?php esc_html_e('Edit', 'swn-deluxe'); ?>
                             </a>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=swn-wheel-items&wheel_id=' . intval($wheel->id))); ?>"
+                                class="button">
+                                <?php esc_html_e('Manage Items', 'swn-deluxe'); ?>
+                            </a>
                         </td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -23,7 +23,8 @@ class Admin_Wheels
 
     /**
      * Initialize hooks.
-     *
+     * Hooks the menu registration to the WordPress admin_menu action.
+     * 
      * @return void
      */
     public static function init()
@@ -84,6 +85,7 @@ class Admin_Wheels
      * Handles:
      * - Displaying the wheel form for create/edit.
      * - Processing form submissions (create/update).
+     * - deleting wheel.
      *
      * @return void
      */
@@ -123,11 +125,19 @@ class Admin_Wheels
             $wheel_id_to_delete = intval($_POST['wheel_id']);
             if ($wheel_id_to_delete > 0) {
                 Wheels::delete($wheel_id_to_delete);
-                wp_safe_redirect(admin_url('admin.php?page=swn-wheels'));
+                wp_safe_redirect(admin_url('admin.php?page=swn-wheels&deleted=1'));
                 exit;
             }
         }
 
+        // Display notice if set
+        if (!empty($_GET['deleted'])) {
+            $notice_message = __('Wheel deleted successfully.', 'swn-deluxe');
+        }
+
+        if ($notice_message) {
+            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
+        }
 
         include "templates/wheel-edit-page.php";
     }

@@ -3,6 +3,7 @@
 namespace SWN_Deluxe;
 
 require_once "class-admin-wheels.php";
+require_once "class-admin-wheel-items.php";
 
 class Admin
 {
@@ -24,6 +25,7 @@ class Admin
         add_action('admin_init', array($this, 'register_settings'));
         add_action('wp_ajax_swn_give_spin_manually', array($this, 'ajax_give_spin_manually'));
         Admin_Wheels::init();
+        Admin_Wheel_Items::init();
     }
 
     public function add_admin_menu()
