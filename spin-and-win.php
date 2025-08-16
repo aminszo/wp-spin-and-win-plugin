@@ -20,37 +20,26 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-
-// Define plugin constants
+/**
+ * Plugin constants
+ */
 define('SWN_DELUXE_VERSION', '1.0.0');
+define('SWN_DELUXE_PLUGIN_FILE', __FILE__);
 define('SWN_DELUXE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SWN_DELUXE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-
-// Include the core files required by the plugin.
-require_once SWN_DELUXE_PLUGIN_DIR . 'admin/class-admin.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-db.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-core.php';
-
+/**
+ * Include bootstrap
+ */
+require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-init.php';
 
 /**
- * Initializes the plugin on the `plugins_loaded` hook.
- *
- * @return void
+ * Activation & deactivation hooks
  */
-add_action('plugins_loaded', function () {
-    Spin_And_Win_Deluxe::instance();
-});
+register_activation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'create_tables']);
+register_deactivation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'delete_tables']);
 
-
-// Register activation and deactivation hooks
-register_activation_hook(__FILE__, array('\SWN_Deluxe\DB', 'create_tables'));
-register_deactivation_hook(__FILE__, array('\SWN_Deluxe\DB', 'delete_tables'));
+/**
+ * Initialize plugin
+ */
+\SWN_Deluxe\Init::init();
