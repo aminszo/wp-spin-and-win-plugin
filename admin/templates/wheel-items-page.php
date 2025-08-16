@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Wheel Items Management Page
  *
  * @package SWN_Deluxe
  */
 
+use SWN_Deluxe\Admin;
 use \SWN_Deluxe\Wheel_Items;
 
 if (! defined('ABSPATH')) exit;
@@ -15,7 +17,7 @@ $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id
 <div class="wrap">
     <h1>
         <?php echo esc_html(sprintf(__('Manage Items for Wheel: %s', 'swn-deluxe'), $wheel->display_name)); ?>
-        <a href="<?php echo admin_url('admin.php?page=swn-wheels'); ?>" class="page-title-action"><?php _e('Back to Wheels', 'swn-deluxe'); ?></a>
+        <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']); ?>" class="page-title-action"><?php _e('Back to Wheels', 'swn-deluxe'); ?></a>
     </h1>
 
     <!-- Add/Edit Item Form -->
@@ -89,7 +91,7 @@ $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id
                         </td>
                         <td><?php echo esc_html($item->sort_order); ?></td>
                         <td>
-                            <a href="<?php echo admin_url('admin.php?page=swn-wheel-items&wheel_id=' . $wheel_id . '&item_id=' . $item->id); ?>" class="button"><?php _e('Edit', 'swn-deluxe'); ?></a>
+                            <a href="<?php echo admin_url('admin.php?page='.Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'].'&wheel_id=' . $wheel_id . '&item_id=' . $item->id); ?>" class="button"><?php _e('Edit', 'swn-deluxe'); ?></a>
 
                             <form method="post" style="display:inline;">
                                 <?php wp_nonce_field('swn_delete_item_action', 'swn_delete_item_nonce'); ?>
@@ -100,7 +102,9 @@ $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="8"><?php _e('No items found.', 'swn-deluxe'); ?></td></tr>
+                <tr>
+                    <td colspan="8"><?php _e('No items found.', 'swn-deluxe'); ?></td>
+                </tr>
             <?php endif; ?>
         </tbody>
     </table>

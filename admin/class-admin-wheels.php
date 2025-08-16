@@ -46,11 +46,11 @@ class Admin_Wheels
 
         // Wheels list page.
         add_submenu_page(
-            ADMIN::PARENT_MENU_SLUG,
+            ADMIN::MENU_SLUGS['PARENT_MENU'],
             __('Wheels', 'swn-deluxe'),
             __('Wheels', 'swn-deluxe'),
             'manage_options',
-            'swn-wheels',
+            ADMIN::MENU_SLUGS['WHEELS_LIST_PAGE'],
             [__CLASS__, 'render_wheels_list'],
             2
         );
@@ -61,7 +61,7 @@ class Admin_Wheels
             __('Edit Wheel', 'swn-deluxe'),
             __('Edit Wheel', 'swn-deluxe'),
             'manage_options',
-            'swn-edit-wheel',
+            ADMIN::MENU_SLUGS['WHEEL_EDIT_PAGE'],
             [__CLASS__, 'render_edit_wheel']
         );
     }
@@ -116,7 +116,7 @@ class Admin_Wheels
             }
 
             // Redirect back to the wheels list after saving.
-            wp_safe_redirect(admin_url('admin.php?page=swn-wheels'));
+            wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']));
             exit;
         }
 
@@ -125,7 +125,7 @@ class Admin_Wheels
             $wheel_id_to_delete = intval($_POST['wheel_id']);
             if ($wheel_id_to_delete > 0) {
                 Wheels::delete($wheel_id_to_delete);
-                wp_safe_redirect(admin_url('admin.php?page=swn-wheels&deleted=1'));
+                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE'] . '&deleted=1'));
                 exit;
             }
         }

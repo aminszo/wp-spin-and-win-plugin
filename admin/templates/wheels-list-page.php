@@ -2,11 +2,13 @@
 
 if (! defined('ABSPATH')) exit;
 
+use \SWN_Deluxe\Admin;
+
 ?>
 
 <div class="wrap">
     <h1 class="wp-heading-inline"><?php esc_html_e('Wheels', 'swn-deluxe'); ?></h1>
-    <a href="<?php echo esc_url(admin_url('admin.php?page=swn-edit-wheel')); ?>" class="page-title-action">
+    <a href="<?php echo esc_url(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_EDIT_PAGE'])); ?>" class="page-title-action">
         <?php esc_html_e('Add New Wheel', 'swn-deluxe'); ?>
     </a>
 
@@ -35,11 +37,11 @@ if (! defined('ABSPATH')) exit;
                         <td><?php echo esc_html(ucfirst($wheel->status)); ?></td>
                         <td><?php echo esc_html($wheel->created_at); ?></td>
                         <td>
-                            <a href="<?php echo esc_url(admin_url('admin.php?page=swn-edit-wheel&id=' . intval($wheel->id))); ?>"
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_EDIT_PAGE'] . '&id=' . intval($wheel->id))); ?>"
                                 class="button">
                                 <?php esc_html_e('Edit', 'swn-deluxe'); ?>
                             </a>
-                            <a href="<?php echo esc_url(admin_url('admin.php?page=swn-wheel-items&wheel_id=' . intval($wheel->id))); ?>"
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'] . '&wheel_id=' . intval($wheel->id))); ?>"
                                 class="button">
                                 <?php esc_html_e('Manage Items', 'swn-deluxe'); ?>
                             </a>

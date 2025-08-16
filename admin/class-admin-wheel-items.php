@@ -38,7 +38,7 @@ class Admin_Wheel_Items
             __('Manage Wheel Items', 'swn-deluxe'),
             __('Manage Wheel Items', 'swn-deluxe'),
             'manage_options',
-            'swn-wheel-items',
+            Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'],
             [__CLASS__, 'render_items_page']
         );
     }

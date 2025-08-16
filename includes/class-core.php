@@ -45,7 +45,7 @@ class Spin_And_Win_Deluxe
         SWN_Ajax::instance();
         SWN_Shortcodes::instance();
         if (is_admin()) {
-            \SWN_Deluxe\Admin::instance();
+            \SWN_Deluxe\Admin::init();
         }
     }
 
@@ -59,7 +59,6 @@ class Spin_And_Win_Deluxe
     {
         load_plugin_textdomain('swn-deluxe', false, basename(dirname(dirname(__FILE__))) . '/languages');
         add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_assets'));
-        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
     }
 
 
@@ -121,27 +120,6 @@ class Spin_And_Win_Deluxe
             'spinning_message' => __('...', 'swn-deluxe'),
             'tick_audio_url' => plugin_dir_url(__FILE__) . 'assets/audio/tick.mp3',
             'success_audio_url' => plugin_dir_url(__FILE__) . 'assets/audio/success.mp3',
-        ));
-    }
-
-
-    /**
-     * Enqueues admin scripts and styles.
-     *
-     * Optionally restricts loading to specific plugin admin pages.
-     *
-     * @param string $hook_suffix Current admin page hook suffix.
-     * @return void
-     */
-    public function enqueue_admin_assets($hook_suffix)
-    {
-        // Load admin assets only on plugin's admin pages
-        // Example: if ( strpos( $hook_suffix, 'swn-settings' ) === false ) return;
-        wp_enqueue_style('swn-admin-css', SWN_DELUXE_PLUGIN_URL . 'assets/css/swn-admin.css', array(), SWN_DELUXE_VERSION);
-        wp_enqueue_script('swn-admin-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/swn-admin.js', array('jquery'), SWN_DELUXE_VERSION, true);
-        wp_localize_script('swn-admin-js', 'swn_admin_params', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('swn_admin_nonce')
         ));
     }
 
