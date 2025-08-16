@@ -35,7 +35,7 @@ require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
-require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-shortcodes.php';
+require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-core.php';
