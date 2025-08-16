@@ -1,6 +1,5 @@
 *.log
 *.htaccess
-.vscode/
 .idea/
 .DS_Store
 .ftpquota
