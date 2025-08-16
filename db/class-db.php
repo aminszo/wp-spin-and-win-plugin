@@ -14,6 +14,17 @@ class DB
         'user_limits' => 'swn_spin_user_limits'
     ];
 
+
+    public static function get_table_name($key)
+    {
+        global $wpdb;
+        return
+            self::$tables[$key] ?
+            $wpdb->prefix . self::$tables[$key] :
+            null;
+    }
+
+
     public static function create_tables()
     {
         global $wpdb;

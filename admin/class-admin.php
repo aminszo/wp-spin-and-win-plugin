@@ -2,6 +2,8 @@
 
 namespace SWN_Deluxe;
 
+require_once "class-admin-wheels.php";
+
 class Admin
 {
     private static $_instance = null;
@@ -14,11 +16,14 @@ class Admin
         return self::$_instance;
     }
 
+    public const PARENT_MENU_SLUG = "swn-settings";
+
     private function __construct()
     {
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
         add_action('wp_ajax_swn_give_spin_manually', array($this, 'ajax_give_spin_manually'));
+        Admin_Wheels::init();
     }
 
     public function add_admin_menu()
@@ -27,7 +32,7 @@ class Admin
             __('Spin & Win', 'swn-deluxe'),
             __('Spin & Win', 'swn-deluxe'),
             'manage_options', // Capability
-            'swn-settings',   // Menu slug
+            self::PARENT_MENU_SLUG,   // Menu slug
             array($this, 'render_settings_page'),
             'dashicons-awards', // Icon
             30 // Position

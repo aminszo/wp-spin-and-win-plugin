@@ -30,6 +30,7 @@ define('SWN_DELUXE_PLUGIN_URL', plugin_dir_url(__FILE__));
 // Include the core files required by the plugin.
 require_once SWN_DELUXE_PLUGIN_DIR . 'admin/class-admin.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-db.php';
+require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
