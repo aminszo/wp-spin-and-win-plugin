@@ -29,6 +29,7 @@ define('SWN_DELUXE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Include the core files required by the plugin.
 require_once SWN_DELUXE_PLUGIN_DIR . 'admin/class-admin.php';
+require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-db.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
@@ -43,14 +44,11 @@ require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-core.php';
  *
  * @return void
  */
-add_action('plugins_loaded', 'swn_deluxe_init');
-
-function swn_deluxe_init()
-{
+add_action('plugins_loaded', function () {
     Spin_And_Win_Deluxe::instance();
-}
+});
 
 
 // Register activation and deactivation hooks
-register_activation_hook(__FILE__, array('SWN_DB', 'activate'));
-register_deactivation_hook(__FILE__, array('SWN_DB', 'deactivate'));
+register_activation_hook(__FILE__, array('\SWN_Deluxe\DB', 'create_tables'));
+register_deactivation_hook(__FILE__, array('\SWN_Deluxe\DB', 'delete_tables'));
