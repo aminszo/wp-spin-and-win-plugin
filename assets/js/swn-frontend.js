@@ -1,36 +1,48 @@
 jQuery(document).ready(function ($) {
+    /**
+     * -----------------------------
+     * INITIALIZATION & VARIABLES
+     * -----------------------------
+     */
+
+    // Ensure Winwheel.js library is loaded, otherwise abort.
     if (typeof Winwheel === 'undefined') {
         console.error('Winwheel.js not loaded.');
         return;
     }
 
+    // DOM references
     const wheelContainer = $('#swn-wheel-container');
     const messageArea = $('#swn-message-area');
     const spinChancesDisplay = $('.swn-spin-chances');
 
+    // Wheel instance + control flags
     let theWheel = null;
     let wheelSpinning = false;
+
+    // Track how many spins user still has (from server via wp_localize_script)
     let currentSpinChances = parseInt(swn_params.user_spin_chances) || 0;
 
+    // Success sound (played when user wins)
     let success_audio = new Audio(swn_params.success_audio_url);
     success_audio.preload = 'auto';
     success_audio.load();
 
-    let segments;
-
-    segments = swn_params.segments.map(segment => ({
+    // Wheel segments (prizes). Convert escaped "\n" into real line breaks for labels.
+    let segments = swn_params.segments.map(segment => ({
         ...segment,
         text: segment.text.replace(/\\n/g, '\n')
     }));
 
-    console.log(segments);
+    // console.log(segments);
 
+    // If no segments configured in admin, abort early with a message.
     if (swn_params.segments && swn_params.segments.length > 0) {
         initWheel();
-        winwheelResize()
+        winwheelResize()  // (winWheel.js library helper function, for resizing the wheel)
     } else {
         if (wheelContainer.length) {
-            alert(wheelContainer.length);
+            // alert(wheelContainer.length);
             messageArea.html('<p>' + 'No prizes configured for the wheel.' + '</p>');
         }
         console.warn('Spin & Win: No segments found to create the wheel.');
@@ -38,16 +50,21 @@ jQuery(document).ready(function ($) {
     }
 
 
-
+    /**
+     * -----------------------------
+     * WHEEL SETUP
+     * -----------------------------
+     */
     function initWheel() {
-        if (!$('#swn-canvas').length) return;
+        if (!$('#swn-canvas').length) return; // Canvas must exist
 
+        // Create a new Winwheel instance with settings passed from PHP
         theWheel = new Winwheel({
             'canvasId': 'swn-canvas',
             'numSegments': swn_params.numSegments,
             'responsive': true,
             'outerRadius': swn_params.outer_radius || 400,
-            'innerRadius': swn_params.inner_radius || 0, // Make it a pie or donut
+            'innerRadius': swn_params.inner_radius || 0, // Make it a pie or donut (0 = pie, >0 = donut)
             'lineWidth': swn_params.wheel_line_width || 2,
             'strokeStyle': swn_params.wheel_stroke_color || '#FFFFFF',
             'textFontSize': swn_params.text_size || 16,
@@ -60,19 +77,20 @@ jQuery(document).ready(function ($) {
                 'type': 'spinToStop',
                 'duration': 10, // Duration in seconds
                 'spins': 10, // Number of spins
-                'callbackFinished': alertPrize,
+                'callbackFinished': alertPrize, // Called when spin stops
                 'callbackAfter': drawTriangle, // Draw pointer after each animation frame
-                'callbackSound': playSound,
+                'callbackSound': playSound, // Tick sound while spinning
             },
-            'pins': { // Optional: add pins
-                'number': swn_params.numSegments * 2, // Example: 2 pins per segment
+            'pins': { // (Optional) Decorative pins around wheel
+                'number': swn_params.numSegments * 2, // 2 pins per segment
                 'fillStyle': 'white',
                 'strokeStyle': '#FFFFFF',
                 'outerRadius': 3,
                 'responsive': true // This must be true if responsive is true
             }
         });
-        drawTriangle(); // Draw initial pointer
+
+        drawTriangle(); // Initial draw of pointer
 
         // let resizeTimeout;
         // window.addEventListener('load', drawTriangle);
@@ -82,6 +100,8 @@ jQuery(document).ready(function ($) {
         //     resizeTimeout = setTimeout(drawTriangle, 200); // adjust delay as needed
         // });
 
+
+        // Tick audio (played each time wheel passes a pin)
         // Create audio object and load audio file.
         let audio = new Audio(swn_params.tick_audio_url);
         audio.preload = 'auto';
@@ -95,11 +115,10 @@ jQuery(document).ready(function ($) {
             audio.play();
         }
 
-
+        // Optional: draw external pointer image instead of triangle
         if (swn_params.pin_image_url && $('#swn-canvas').length) {
             let pinImage = new Image();
             pinImage.onload = function () {
-                // alert('pin2');
 
                 // Position the pin image centered on top of the canvas
                 // This is a basic example; you might need to adjust dynamically
@@ -120,7 +139,9 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    // Function to draw the pointer
+    /**
+     * Draw static triangle pointer on top of the wheel
+     */
     function drawTriangle() {
         if (!theWheel) return;
 
@@ -180,27 +201,35 @@ jQuery(document).ready(function ($) {
     }
 
 
+    /**
+     * -----------------------------
+     * SPIN BUTTON HANDLER
+     * -----------------------------
+     */
     $('#swn-spin-trigger').on('click', function () {
-        if (wheelSpinning) {
-            return;
-        }
+        // Prevent multiple spins at the same time
+        if (wheelSpinning) return;
 
+        // Require login
         if (!swn_params.user_logged_in) {
             messageArea.text(swn_params.not_logged_in_message).addClass('swn-error');
             return;
         }
 
+        // Check spin chances
         if (currentSpinChances <= 0) {
             messageArea.text(swn_params.no_spins_message).addClass('swn-error');
-            // Optionally hide or disable spin button
+            // Disable spin button
             $(this).prop('disabled', true).css('opacity', 0.5);
             return;
         }
 
+        // Mark spinning state and update UI
         wheelSpinning = true;
         $(this).prop('disabled', true).css('opacity', 0.7);
         messageArea.text(swn_params.spinning_message).removeClass('swn-error swn-success');
 
+        // Perform AJAX request to backend (which decides the winning segment)
         $.ajax({
             url: swn_params.ajax_url,
             type: 'POST',
@@ -210,13 +239,12 @@ jQuery(document).ready(function ($) {
                 nonce: swn_params.nonce
             },
             success: function (response) {
-
                 if (response.success) {
-                    console.log("swn ajax success");
-                    console.log(response);
+                    // console.log("swn ajax success");
+                    // console.log(response);
                     let winningSegmentNumber = parseInt(response.data.stop_at_segment);
                     if (theWheel && typeof theWheel.startAnimation === 'function' && winningSegmentNumber > 0) {
-                        // Calculate the angle to stop at for the specified segment.
+                        // Calculate exact angle for chosen segment
                         let stopAtAngle = theWheel.getRandomForSegment(winningSegmentNumber);
                         theWheel.animation.stopAngle = stopAtAngle;
 
@@ -228,17 +256,16 @@ jQuery(document).ready(function ($) {
                         };
                         theWheel.startAnimation();
                     } else {
-                        // Fallback if animation can't start (e.g., bad segment number)
+                        // Fallback if animation can't start (e.g., bad segment number). directly show prize without animation.
                         alertPrizeDirectly(response.data);
                         wheelSpinning = false;
                         $('#swn-spin-trigger').prop('disabled', false).css('opacity', 1);
                     }
                     currentSpinChances = parseInt(response.data.remaining_spins);
                     updateSpinChancesDisplay();
-
-                } else {
-                    console.log("swn ajax error");
-                    console.log(response);
+                } else { // Server returned error (e.g. no spins, invalid nonce, etc.)
+                    // console.log("swn ajax error");
+                    // console.log(response);
                     messageArea.text(response.data.message || 'An error occurred.').addClass('swn-error');
                     wheelSpinning = false;
                     $('#swn-spin-trigger').prop('disabled', false).css('opacity', 1);
@@ -249,6 +276,7 @@ jQuery(document).ready(function ($) {
                 }
             },
             error: function () {
+                // Network/connection failure
                 messageArea.text('Network error. Please try again.').addClass('swn-error');
                 wheelSpinning = false;
                 $('#swn-spin-trigger').prop('disabled', false).css('opacity', 1);
@@ -256,11 +284,21 @@ jQuery(document).ready(function ($) {
         });
     });
 
+
+    /**
+     * -----------------------------
+     * CALLBACKS AFTER SPIN
+     * -----------------------------
+     */
+
+    // Called when animation ends
+
     function alertPrize(indicatedSegment) { // indicatedSegment is passed by Winwheel
         wheelSpinning = false;
         $('#swn-spin-trigger').prop('disabled', false).css('opacity', 1);
 
         if (theWheel.userData) {
+            // Show SweetAlert with details
             messageArea.html('<h3>' + 'شما برنده ' + theWheel.userData.prize_name + ' شدید.' + '</h3><p>' + theWheel.userData.prize_details + '</p>').addClass('swn-success');
             let winning_text = (swn_params.win_message || 'You won: %s').replace('%s', indicatedSegment.text) + '<br/>' + theWheel.userData.prize_details;
             Swal.fire({
@@ -275,7 +313,7 @@ jQuery(document).ready(function ($) {
                     success_audio.play().catch(err => console.warn('Playback prevented:', err));
                 }
             });
-            // Optionally, reset the wheel to allow further spins if chances remain.
+            // reset the wheel to allow further spins if chances remain.
             theWheel.stopAnimation(false); // Stop the animation, false as param so callback not called again.
             theWheel.rotationAngle = 0;    // Re-set the wheel angle to 0 degrees.
             theWheel.draw();                // Call draw to render changes to the wheel.
@@ -299,7 +337,8 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    function alertPrizeDirectly(data) { // Used if animation fails to start
+    // Used if spin animation fails to start
+    function alertPrizeDirectly(data) {
         messageArea.html('<h3>' + data.prize_name + '</h3><p>' + data.prize_details + '</p>').addClass('swn-success');
         currentSpinChances = parseInt(data.remaining_spins);
         updateSpinChancesDisplay();
@@ -308,6 +347,12 @@ jQuery(document).ready(function ($) {
         }
     }
 
+
+    /**
+     * -----------------------------
+     * SPIN CHANCES DISPLAY
+     * -----------------------------
+     */
     function updateSpinChancesDisplay() {
         let chancesText = (swn_params.remaining_spins_text || 'Remaining spin chances: %d').replace('%d', currentSpinChances);
 
