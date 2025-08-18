@@ -89,6 +89,7 @@ class Shortcode
         $params = [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('swn_spin_nonce'),
+            'wheel_id' => $wheel['id'],
             'user_logged_in' => is_user_logged_in(),
             'segments' => $segments,
             'numSegments' => count($segments),
@@ -106,8 +107,8 @@ class Shortcode
             'no_spins_message' => __('You have no spins left.', 'swn-deluxe'),
             'win_message' => __('You won %s', 'swn-deluxe'),
             'spinning_message' => __('...', 'swn-deluxe'),
-            'tick_audio_url' => plugin_dir_url(__FILE__) . 'assets/audio/tick.mp3',
-            'success_audio_url' => plugin_dir_url(__FILE__) . 'assets/audio/success.mp3',
+            'tick_audio_url' => SWN_DELUXE_PLUGIN_URL . 'assets/audio/tick.mp3',
+            'success_audio_url' => SWN_DELUXE_PLUGIN_URL . 'assets/audio/success.mp3',
         ];
 
         wp_localize_script('swn-frontend-js', 'swn_params', $params);

@@ -38,6 +38,10 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
 
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
+
+
         if (is_admin()) {
             require_once SWN_DELUXE_PLUGIN_DIR . 'admin/class-admin.php';
         }
@@ -62,7 +66,7 @@ class Init
         // Core instances
         \SWN_DB::instance();
         \SWN_User::instance();
-        \SWN_Ajax::instance();
+        // \SWN_Ajax::instance();
 
         // Frontend shortcode
         Shortcode::init();
@@ -72,6 +76,9 @@ class Init
         // DB::delete_tables();
         // DB::create_tables();
 
+        // Initialize AJAX hooks
+        \SWN_Deluxe\Handle_Spin\AJAX::init();
+        
         // Admin area
         if (is_admin()) {
             Admin::init();
