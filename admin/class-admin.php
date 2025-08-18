@@ -14,6 +14,7 @@ class Admin
         'WHEELS_LIST_PAGE' => 'swn-wheels-list',
         'WHEEL_EDIT_PAGE' => 'swn-edit-wheel',
         'WHEEL_ITEMS_LIST_PAGE' => 'swn-wheel-items-list',
+        'WHEEL_ITEM_EDIT_PAGE' => 'swn-edit-wheel-item',
     ];
 
 

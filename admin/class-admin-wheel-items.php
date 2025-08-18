@@ -39,7 +39,16 @@ class Admin_Wheel_Items
             __('Manage Wheel Items', 'swn-deluxe'),
             'manage_options',
             Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'],
-            [__CLASS__, 'render_items_page']
+            [__CLASS__, 'render_items_list']
+        );
+
+        add_submenu_page(
+            null, // Hidden page, linked from edit wheels list page.
+            __('Edit Item', 'swn-deluxe'),
+            __('Edit Item', 'swn-deluxe'),
+            'manage_options',
+            Admin::MENU_SLUGS['WHEEL_ITEM_EDIT_PAGE'],
+            [__CLASS__, 'render_edit_item']
         );
     }
 
@@ -54,7 +63,36 @@ class Admin_Wheel_Items
      *
      * @return void
      */
-    public static function render_items_page()
+    public static function render_items_list()
+    {
+        $wheel_id = isset($_GET['wheel_id']) ? intval($_GET['wheel_id']) : 0;
+        if (!$wheel_id) {
+            echo '<div class="notice notice-error"><p>' . __('Invalid wheel ID.', 'swn-deluxe') . '</p></div>';
+            return;
+        }
+
+        $wheel = Wheels::get($wheel_id);
+        $items = Wheel_Items::get_by_wheel($wheel_id);
+
+        // Handle item delete
+        if (isset($_POST['swn_delete_item']) && check_admin_referer('swn_delete_item_action', 'swn_delete_item_nonce')) {
+            $item_id = intval($_POST['item_id']);
+            if ($item_id > 0) {
+                Wheel_Items::delete($item_id);
+                $notice_message = __('Item deleted successfully.', 'swn-deluxe');
+                // Refresh the items list
+                $items = Wheel_Items::get_by_wheel($wheel_id);
+            }
+        }
+        
+        if ($notice_message) {
+            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
+        }
+
+        include "templates/wheel-items-page.php";
+    }
+
+    public static function render_edit_item()
     {
         $wheel_id = isset($_GET['wheel_id']) ? intval($_GET['wheel_id']) : 0;
         if (!$wheel_id) {
@@ -91,22 +129,11 @@ class Admin_Wheel_Items
             $items = Wheel_Items::get_by_wheel($wheel_id);
         }
 
-        // Handle item delete
-        if (isset($_POST['swn_delete_item']) && check_admin_referer('swn_delete_item_action', 'swn_delete_item_nonce')) {
-            $item_id = intval($_POST['item_id']);
-            if ($item_id > 0) {
-                Wheel_Items::delete($item_id);
-                $notice_message = __('Item deleted successfully.', 'swn-deluxe');
-                // Refresh the items list
-                $items = Wheel_Items::get_by_wheel($wheel_id);
-            }
-        }
-
         // Just before including the template
         if ($notice_message) {
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }
 
-        include "templates/wheel-items-page.php";
+        include "templates/wheel-item-edit-page.php";
     }
 }

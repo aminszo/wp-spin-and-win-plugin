@@ -11,7 +11,6 @@ use \SWN_Deluxe\Wheel_Items;
 
 if (! defined('ABSPATH')) exit;
 
-$editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id'])) : null;
 ?>
 
 <div class="wrap">
@@ -20,50 +19,13 @@ $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id
         <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']); ?>" class="page-title-action"><?php _e('Back to Wheels', 'swn-deluxe'); ?></a>
     </h1>
 
-    <!-- Add/Edit Item Form -->
-    <h2><?php echo $editing_item ? __('Edit Item', 'swn-deluxe') : __('Add New Item', 'swn-deluxe'); ?></h2>
-    <form method="post">
-        <?php wp_nonce_field('swn_save_item_action', 'swn_save_item_nonce'); ?>
-        <input type="hidden" name="item_id" value="<?php echo $editing_item ? esc_attr($editing_item->id) : ''; ?>">
-
-        <table class="form-table">
-            <tr>
-                <th><label for="name"><?php _e('Name', 'swn-deluxe'); ?></label></th>
-                <td><input type="text" name="name" id="name" value="<?php echo $editing_item ? esc_attr($editing_item->name) : ''; ?>" class="regular-text" required></td>
-            </tr>
-            <tr>
-                <th><label for="display_name"><?php _e('Display Name', 'swn-deluxe'); ?></label></th>
-                <td><input type="text" name="display_name" id="display_name" value="<?php echo $editing_item ? esc_attr($editing_item->display_name) : ''; ?>" class="regular-text" required></td>
-            </tr>
-            <tr>
-                <th><label for="type"><?php _e('Type', 'swn-deluxe'); ?></label></th>
-                <td><input type="text" name="type" id="type" value="<?php echo $editing_item ? esc_attr($editing_item->type) : 'coupon'; ?>" class="regular-text" required></td>
-            </tr>
-            <tr>
-                <th><label for="value"><?php _e('Value', 'swn-deluxe'); ?></label></th>
-                <td><input type="text" name="value" id="value" value="<?php echo $editing_item ? esc_attr($editing_item->value) : ''; ?>" class="regular-text"></td>
-            </tr>
-            <tr>
-                <th><label for="probability"><?php _e('Probability', 'swn-deluxe'); ?></label></th>
-                <td><input type="number" name="probability" id="probability" step="0.01" value="<?php echo $editing_item ? esc_attr($editing_item->probability) : 0; ?>" class="small-text"></td>
-            </tr>
-            <tr>
-                <th><label for="segment_color"><?php _e('Segment Color', 'swn-deluxe'); ?></label></th>
-                <td><input type="color" name="segment_color" id="segment_color" value="<?php echo $editing_item ? esc_attr($editing_item->segment_color) : '#ffffff'; ?>"></td>
-            </tr>
-            <tr>
-                <th><label for="sort_order"><?php _e('Sort Order', 'swn-deluxe'); ?></label></th>
-                <td><input type="number" name="sort_order" id="sort_order" value="<?php echo $editing_item ? esc_attr($editing_item->sort_order) : 0; ?>" class="small-text"></td>
-            </tr>
-        </table>
-
-        <?php submit_button($editing_item ? __('Update Item', 'swn-deluxe') : __('Add Item', 'swn-deluxe'), 'primary', 'swn_save_item'); ?>
-    </form>
-
     <hr>
 
     <!-- Items List Table -->
-    <h2><?php _e('Existing Items', 'swn-deluxe'); ?></h2>
+    <h2>
+        <?php _e('Existing Items', 'swn-deluxe'); ?>
+        <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEM_EDIT_PAGE'] . '&wheel_id=' . $wheel_id) ?>" class="page-title-action"><?php _e('Add New Item', 'swn-deluxe'); ?></a>
+    </h2>
     <table class="wp-list-table widefat fixed striped">
         <thead>
             <tr>
@@ -91,7 +53,7 @@ $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id
                         </td>
                         <td><?php echo esc_html($item->sort_order); ?></td>
                         <td>
-                            <a href="<?php echo admin_url('admin.php?page='.Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'].'&wheel_id=' . $wheel_id . '&item_id=' . $item->id); ?>" class="button"><?php _e('Edit', 'swn-deluxe'); ?></a>
+                            <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEM_EDIT_PAGE'] . '&wheel_id=' . $wheel_id . '&item_id=' . $item->id); ?>" class="button"><?php _e('Edit', 'swn-deluxe'); ?></a>
 
                             <form method="post" style="display:inline;">
                                 <?php wp_nonce_field('swn_delete_item_action', 'swn_delete_item_nonce'); ?>
