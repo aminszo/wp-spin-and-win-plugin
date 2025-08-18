@@ -1,6 +1,5 @@
 <?php
 
-use SWN_Deluxe\Admin;
 use \SWN_Deluxe\Wheel_Items;
 
 $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id'])) : null;

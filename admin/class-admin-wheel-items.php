@@ -84,12 +84,12 @@ class Admin_Wheel_Items
                 $items = Wheel_Items::get_by_wheel($wheel_id);
             }
         }
-        
+
         if ($notice_message) {
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }
 
-        include "templates/wheel-items-page.php";
+        include "templates/wheel-items-list-page.php";
     }
 
     public static function render_edit_item()
