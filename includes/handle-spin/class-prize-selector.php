@@ -1,23 +1,27 @@
 <?php
 
-namespace SWN_Deluxe;
+namespace SWN_Deluxe\Handle_Spin;
 
-class Prize_Selector {
-    public function select_random_prize( int $wheel_id ) {
-        $items = Wheel_Items::get_active_items( $wheel_id );
+use SWN_Deluxe\Wheel_Items;
 
-        if ( empty( $items ) ) {
+class Prize_Selector
+{
+    public function select_random_prize(int $wheel_id)
+    {
+        $items = Wheel_Items::get_by_wheel($wheel_id);
+
+        if (empty($items)) {
             return null;
         }
 
         // Weighted random based on probability
         $pool = [];
-        foreach ( $items as $item ) {
-            for ( $i = 0; $i < $item->weight; $i++ ) {
+        foreach ($items as $item) {
+            for ($i = 0; $i < $item->probability; $i++) {
                 $pool[] = $item;
             }
         }
 
-        return $pool[ array_rand( $pool ) ];
+        return $pool[array_rand($pool)];
     }
 }

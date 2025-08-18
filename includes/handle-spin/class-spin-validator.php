@@ -27,7 +27,7 @@ class Spin_Validator
         }
 
         // Check if the user is logged in
-        if (! is_user_logged_in()) {
+        if (! $user_id) {
             return [
                 'success' => false,
                 'data' => ['message' => __('You must be logged in to spin.', 'swn-deluxe')]

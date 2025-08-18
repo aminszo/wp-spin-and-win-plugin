@@ -226,9 +226,9 @@ jQuery(document).ready(function ($) {
         }
 
         // Mark spinning state and update UI
-        wheelSpinning = true;
+        // wheelSpinning = true;
         // $(this).prop('disabled', true).css('opacity', 0.7);
-        messageArea.text(swn_params.spinning_message).removeClass('swn-error swn-success');
+        // messageArea.text(swn_params.spinning_message).removeClass('swn-error swn-success');
 
         // Perform AJAX request to backend (which decides the winning segment)
         $.ajax({
@@ -242,7 +242,6 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 console.log(response)
-                console.log("BBBBBBBBBBBBBBBBBBBBBBBBB");
                 return;
                 if (response.success) {
                     // console.log("swn ajax success");
@@ -282,7 +281,6 @@ jQuery(document).ready(function ($) {
             },
             error: function (response) {
                 console.log(response)
-                console.log("BBBBBBBBBBBBBBBBBBBBBBBBB");
                 return;
 
                 // Network/connection failure

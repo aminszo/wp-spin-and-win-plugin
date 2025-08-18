@@ -18,8 +18,21 @@ class Spin_Handler
         $prize    = $selector->select_random_prize($wheel_id);
 
         if (! $prize) {
-            return ['success' => false, 'message' => __('No prizes available.', 'swn-deluxe')];
+            return [
+                'success' => false,
+                'data' => ['message' => __('No prizes available.', 'swn-deluxe')]
+            ];
         }
+
+
+        return [
+            'success' => true,
+            'data' => [
+                'message' => __('you won a prize', 'swn-deluxe'),
+                'prize' => $prize,
+            ]
+        ];
+
 
         // $awarder = new Prize_Awarder();
         // $award   = $awarder->award($prize, $wheel_id, $user_id);

@@ -41,6 +41,8 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-selector.php';
 
 
         if (is_admin()) {
