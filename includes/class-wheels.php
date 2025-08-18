@@ -32,8 +32,8 @@ class Wheels
     /**
      * Get a single wheel by ID
      *
-     * @param int $id
-     * @return object|null
+     * @param int $id Wheel ID
+     * @return object|null Wheel object if found, null if not found.
      */
     public static function get($id)
     {

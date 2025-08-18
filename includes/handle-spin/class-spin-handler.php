@@ -5,7 +5,7 @@ namespace SWN_Deluxe\Handle_Spin;
 class Spin_Handler
 {
 
-    public function process_spin(int $wheel_id, int $user_id)
+    public function process_spin($wheel_id, int $user_id)
     {
         $validator = new Spin_Validator();
 
@@ -21,15 +21,15 @@ class Spin_Handler
             return ['success' => false, 'message' => __('No prizes available.', 'swn-deluxe')];
         }
 
-        $awarder = new Prize_Awarder();
-        $award   = $awarder->award($prize, $wheel_id, $user_id);
+        // $awarder = new Prize_Awarder();
+        // $award   = $awarder->award($prize, $wheel_id, $user_id);
 
-        Spin_History::log($wheel_id, $user_id, $prize['id']);
+        // Spin_History::log($wheel_id, $user_id, $prize['id']);
 
-        return [
-            'success' => true,
-            'prize'   => $prize,
-            'message' => __('You won a prize!', 'swn-deluxe')
-        ];
+        // return [
+        //     'success' => true,
+        //     'prize'   => $prize,
+        //     'message' => __('You won a prize!', 'swn-deluxe')
+        // ];
     }
 }

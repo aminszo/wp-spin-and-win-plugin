@@ -1,23 +1,43 @@
 <?php
 
-namespace SWN_Deluxe;
+namespace SWN_Deluxe\Handle_Spin;
 
-class Spin_Validator {
-    public function validate( int $wheel_id, int $user_id ): array {
-        if ( ! $wheel_id || ! Wheels::exists( $wheel_id ) ) {
-            return [ 'success' => false, 'message' => __( 'Invalid wheel.', 'swn-deluxe' ) ];
+use \SWN_Deluxe\Wheels;
+
+class Spin_Validator
+{
+    public function validate($wheel_id, int $user_id): array
+    {
+
+        // Check if wheel_id is provided and valid
+        if ($wheel_id === null) {
+            return [
+                'success' => false,
+                'data' => ['message' => __('Missing or invalid wheel ID.', 'swn-deluxe')]
+            ];
         }
 
-        $wheel = Wheels::get( $wheel_id );
-        if ( $wheel->status !== 'active' ) {
-            return [ 'success' => false, 'message' => __( 'Wheel is not active.', 'swn-deluxe' ) ];
+        // Check if the wheel with the specified id exists
+        $wheel = Wheels::get($wheel_id);
+        if (! $wheel) {
+            return [
+                'success' => false,
+                'data' => ['message' => __('The requested wheel does not exist.', 'swn-deluxe')]
+            ];
         }
 
-        // Example: Check spin limit per user
-        if ( Spin_History::user_has_spun_today( $wheel_id, $user_id ) ) {
-            return [ 'success' => false, 'message' => __( 'You have already spun today.', 'swn-deluxe' ) ];
+        // Check if the user is logged in
+        if (! is_user_logged_in()) {
+            return [
+                'success' => false,
+                'data' => ['message' => __('You must be logged in to spin.', 'swn-deluxe')]
+            ];
         }
 
-        return [ 'success' => true ];
+        // Check if the user has any remaining spin chances for this wheel
+        // This logic needs to be implemented
+
+        // All validations passed; the user is allowed to spin
+        return ['success' => true];
     }
 }
