@@ -83,7 +83,7 @@ $wheel_settings = maybe_unserialize($wheel->settings);
             </tr>
         </table>
 
-        <?php submit_button($wheel->id ? __('Update Wheel', 'swn-deluxe') : __('Add Wheel', 'swn-deluxe'), 'primary', 'swn_save_wheel'); ?>
+        <?php submit_button($wheel->id ? __('Update Wheel', 'swn-deluxe') : __('Create Wheel', 'swn-deluxe'), 'primary', 'swn_save_wheel'); ?>
     </form>
 
     <?php if ($wheel->id) : ?>
