@@ -3,6 +3,7 @@
 namespace SWN_Deluxe;
 
 require_once 'class-admin-wheels.php';
+require_once 'class-wheels-list-table.php';
 require_once 'class-admin-wheel-items.php';
 
 
@@ -52,10 +53,16 @@ class Admin
         if (! self::is_plugin_admin_page($hook_suffix)) return;
 
         wp_enqueue_style('swn-admin-css', SWN_DELUXE_PLUGIN_URL . 'assets/css/swn-admin.css', array(), SWN_DELUXE_VERSION);
-        wp_enqueue_script('swn-admin-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/swn-admin.js', array('jquery'), SWN_DELUXE_VERSION, true);
-        wp_localize_script('swn-admin-js', 'swn_admin_params', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('swn_admin_nonce')
+        wp_enqueue_script('swn-admin-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/swn-admin.js', array('jquery'), 111, true);
+        wp_localize_script('swn-admin-js', 'swnData', array(
+            'params' => [
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('swn_admin_nonce')
+            ],
+            'translations' => [
+                'copied' => __('Copied!', 'swn-deluxe'),
+                'copy_shortcode' => __('Copy Shortcode', 'swn-deluxe'),
+            ]
         ));
     }
 

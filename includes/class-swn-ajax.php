@@ -13,8 +13,20 @@ class SWN_Ajax
 
     private function __construct()
     {
-        add_action('wp_ajax_swn_spin_wheel', array($this, 'handle_spin_wheel'));
+        // add_action('wp_ajax_swn_spin_wheel', array($this, 'handle_spin_wheel'));
+        add_action('wp_ajax_swn_spin_wheel', array($this, 'ajax_test_response'));
         // No wp_ajax_nopriv_ for this action as only logged-in users can spin
+    }
+
+    public function ajax_test_response()
+    {
+        wp_send_json_success(array(
+            'message'          => "hi", //sprintf(__('Congratulations! You won: %s', 'swn-deluxe'), $winning_prize['name']),
+            'prize_name'       => 'prizeA',
+            'prize_details'    => 'A Detail',
+            'stop_at_segment'  => 1, // Winwheel segments are 1-indexed for stopAngle
+            'remaining_spins'  => 1,
+        ));
     }
 
     public function handle_spin_wheel()
@@ -63,9 +75,9 @@ class SWN_Ajax
 
         // Log the spin
         SWN_DB::add_spin_log($user_id, $winning_prize['name'], $prize_awarded_details);
-        
+
         SWN_SMS::send_pattern_sms($user_id, $sms_patern_code, $sms_variables);
-        
+
         wp_send_json_success(array(
             'message'          => "hi", //sprintf(__('Congratulations! You won: %s', 'swn-deluxe'), $winning_prize['name']),
             'prize_name'       => $winning_prize['name'],
@@ -73,7 +85,6 @@ class SWN_Ajax
             'stop_at_segment'  => $winning_segment_index + 1, // Winwheel segments are 1-indexed for stopAngle
             'remaining_spins'  => SWN_User::get_spin_chances($user_id),
         ));
-
     }
 
     private function calculate_winning_prize($prizes)
@@ -168,7 +179,7 @@ TEXT;
                     // $total_credit = $credit + $credit_amount;
                     // update_user_meta($user_id, 'unused_credit', $total_credit);
 
-                    \ACBD\Transaction::manualIncrease($user_id, $credit_amount , "added by spin and win plugin");
+                    \ACBD\Transaction::manualIncrease($user_id, $credit_amount, "added by spin and win plugin");
                     // my_custom_credit_system_add_credits($user_id, $credit_amount);
                     $result['details'] = sprintf(__('%d credits added to your account.', 'swn-deluxe'), $credit_amount);
 

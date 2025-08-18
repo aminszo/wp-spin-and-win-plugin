@@ -15,6 +15,7 @@ jQuery(document).ready(function ($) {
     const wheelContainer = $('#swn-wheel-container');
     const messageArea = $('#swn-message-area');
     const spinChancesDisplay = $('.swn-spin-chances');
+    const spinTriggerButton = $('#swn-spin-trigger');
 
     // Wheel instance + control flags
     let theWheel = null;

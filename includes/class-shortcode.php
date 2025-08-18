@@ -4,9 +4,11 @@ namespace SWN_Deluxe;
 
 class Shortcode
 {
+
+    public const SHORTCODE_NAME = 'spin_and_win_wheel';
     public static function init()
     {
-        add_shortcode('spin_and_win_wheel', [self::class, 'render_wheel_shortcode']);
+        add_shortcode(self::SHORTCODE_NAME, [self::class, 'render_wheel_shortcode']);
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_frontend_assets']);
     }
 
@@ -43,7 +45,7 @@ class Shortcode
         // logic to determine if assets should be loaded
         // check if the current page contains the shortcode
         global $post;
-        return (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'spin_and_win_wheel'));
+        return (is_a($post, 'WP_Post') && has_shortcode($post->post_content, self::SHORTCODE_NAME));
     }
 
 
@@ -57,7 +59,7 @@ class Shortcode
     {
         $atts = shortcode_atts([
             'slug' => 'default',
-        ], $atts, 'spin_and_win_wheel');
+        ], $atts, self::SHORTCODE_NAME);
 
         $wheel = Wheels::get_by_slug($atts['slug']);
         if (!$wheel) {

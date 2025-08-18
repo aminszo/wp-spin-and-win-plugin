@@ -28,6 +28,7 @@ class Init
     private static function include_required_files(): void
     {
         require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-db.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-seeder.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
@@ -65,6 +66,11 @@ class Init
 
         // Frontend shortcode
         Shortcode::init();
+
+        // Seed sample data (run it once, then comment it)
+        // Seeder::seed_sample_data();
+        // DB::delete_tables();
+        // DB::create_tables();
 
         // Admin area
         if (is_admin()) {

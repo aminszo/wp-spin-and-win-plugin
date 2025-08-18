@@ -72,9 +72,13 @@ class Admin_Wheels
      *
      * @return void
      */
+
     public static function render_wheels_list()
     {
-        $wheels = Wheels::get_all();
+        // Instantiate the list table
+        $list_table = new Wheels_List_Table();
+        $list_table->prepare_items();
+
         include "templates/wheels-list-page.php";
     }
 
