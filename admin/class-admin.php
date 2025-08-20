@@ -5,6 +5,7 @@ namespace SWN_Deluxe;
 defined('ABSPATH') || exit;
 
 require_once 'class-admin-wheels.php';
+require_once 'class-admin-settings.php';
 require_once 'class-wheels-list-table.php';
 require_once 'class-admin-wheel-items.php';
 
@@ -22,24 +23,37 @@ class Admin
 
     public static function init()
     {
-        add_action('admin_menu', array(self::class, 'add_admin_parent_menu'));
+        add_action('admin_menu', array(self::class, 'add_admin_menu'));
         add_action('admin_enqueue_scripts', array(self::class, 'enqueue_admin_assets'));
 
         Admin_Wheels::init();
         Admin_Wheel_Items::init();
+        Admin_Settings::init();
     }
 
 
-    public static function add_admin_parent_menu()
+    public static function add_admin_menu()
     {
+        // Parent Menu
         add_menu_page(
             __('Spin & Win', 'swn-deluxe'),
             __('Spin & Win', 'swn-deluxe'),
             'manage_options', // Capability
             self::MENU_SLUGS['PARENT_MENU'],   // Menu slug
-            array(self::class, 'render_admin_page'), // this method does not exist yet
+            [Admin_Settings::class, 'render_settings_page'], // this method does not exist yet
             'dashicons-awards', // Icon
             30 // Position
+        );
+
+        // Settings page.
+        add_submenu_page(
+            ADMIN::MENU_SLUGS['PARENT_MENU'],
+            __('Settings', 'swn-deluxe'),
+            __('Settings', 'swn-deluxe'),
+            'manage_options',
+            ADMIN::MENU_SLUGS['PARENT_MENU'], // Menu slug (same as parent to make it "default") 
+            [Admin_Settings::class, 'render_settings_page'],
+            2
         );
     }
 
