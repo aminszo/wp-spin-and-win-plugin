@@ -34,17 +34,17 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-seeder.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
 
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
+        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-history.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-selector.php';
 
 
@@ -70,17 +70,17 @@ class Init
         );
 
         // Core instances
-        \SWN_DB::instance();
-        \SWN_User::instance();
+        // \SWN_DB::instance();
+        // \SWN_User::instance();
         // \SWN_Ajax::instance();
 
         // Frontend shortcode
         Shortcode::init();
 
         // Seed sample data (run it once, then comment it)
-        // Seeder::seed_sample_data();
         // DB::delete_tables();
         // DB::create_tables();
+        // Seeder::seed_sample_data();
 
         // Initialize AJAX hooks
         \SWN_Deluxe\Handle_Spin\AJAX::init();
