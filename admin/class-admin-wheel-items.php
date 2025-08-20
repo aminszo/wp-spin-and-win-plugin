@@ -2,7 +2,8 @@
 
 namespace SWN_Deluxe;
 
-if (! defined('ABSPATH')) exit;
+defined('ABSPATH') || exit;
+
 
 /**
  * Class Admin_Wheel_Items

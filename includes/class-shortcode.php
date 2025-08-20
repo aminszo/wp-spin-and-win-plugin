@@ -2,6 +2,9 @@
 
 namespace SWN_Deluxe;
 
+defined('ABSPATH') || exit;
+
+
 class Shortcode
 {
 

@@ -1,14 +1,14 @@
 <?php
 
+namespace SWN_Deluxe;
+
+defined('ABSPATH') || exit;
+
 /**
  * Wheel Edit Page
  *
  * @package SWN_Deluxe
  */
-
-if (!defined('ABSPATH')) {
-    exit;
-}
 
 // Default values for new wheel
 $wheel = $wheel ?? (object) [

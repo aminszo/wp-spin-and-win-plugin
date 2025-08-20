@@ -2,6 +2,9 @@
 
 namespace SWN_Deluxe;
 
+defined('ABSPATH') || exit;
+
+
 /**
  * Main plugin bootstrap handler.
  *
@@ -81,7 +84,7 @@ class Init
 
         // Initialize AJAX hooks
         \SWN_Deluxe\Handle_Spin\AJAX::init();
-        
+
         // Admin area
         if (is_admin()) {
             Admin::init();

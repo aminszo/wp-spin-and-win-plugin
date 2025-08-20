@@ -4,6 +4,7 @@ namespace SWN_Deluxe\Handle_Spin;
 
 defined('ABSPATH') || exit;
 
+
 /**
  * Class AJAX
  *

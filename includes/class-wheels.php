@@ -2,7 +2,8 @@
 
 namespace SWN_Deluxe;
 
-if (! defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
+
 
 class Wheels
 {

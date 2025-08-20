@@ -1,8 +1,8 @@
 <?php
 
-if (! defined('ABSPATH')) exit;
+namespace SWN_Deluxe;
 
-use SWN_Deluxe\Admin;
+defined('ABSPATH') || exit;
 
 ?>
 

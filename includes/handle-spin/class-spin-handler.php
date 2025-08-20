@@ -2,6 +2,9 @@
 
 namespace SWN_Deluxe\Handle_Spin;
 
+defined('ABSPATH') || exit;
+
+
 class Spin_Handler
 {
 

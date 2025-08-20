@@ -4,6 +4,9 @@ namespace SWN_Deluxe\Handle_Spin;
 
 use \SWN_Deluxe\Wheels;
 
+defined('ABSPATH') || exit;
+
+
 class Spin_Validator
 {
     public function validate($wheel_id, int $user_id): array

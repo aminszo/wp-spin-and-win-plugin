@@ -2,8 +2,13 @@
 
 namespace SWN_Deluxe;
 
-class Seeder {
-    public static function seed_sample_data() {
+defined('ABSPATH') || exit;
+
+
+class Seeder
+{
+    public static function seed_sample_data()
+    {
         $wheel_id = Wheels::insert([
             'name'         => 'demo_wheel',
             'display_name' => 'Demo Prize Wheel',
@@ -26,7 +31,7 @@ class Seeder {
                 'segment_color' => '#7a33ff',
                 'sort_order'    => 1,
             ],
-                        [
+            [
                 'wheel_id'      => $wheel_id,
                 'name'          => 'discount_20',
                 'display_name'  => '20% Off Coupon',
@@ -36,7 +41,7 @@ class Seeder {
                 'segment_color' => '#33ffad',
                 'sort_order'    => 2,
             ],
-                        [
+            [
                 'wheel_id'      => $wheel_id,
                 'name'          => 'discount_10',
                 'display_name'  => '30% Off Coupon',
@@ -46,7 +51,7 @@ class Seeder {
                 'segment_color' => '#FF5733',
                 'sort_order'    => 3,
             ],
-                        [
+            [
                 'wheel_id'      => $wheel_id,
                 'name'          => 'discount_10',
                 'display_name'  => '40% Off Coupon',

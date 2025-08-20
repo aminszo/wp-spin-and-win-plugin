@@ -2,6 +2,8 @@
 
 namespace SWN_Deluxe;
 
+defined('ABSPATH') || exit;
+
 require_once 'class-admin-wheels.php';
 require_once 'class-wheels-list-table.php';
 require_once 'class-admin-wheel-items.php';

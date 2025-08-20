@@ -1,15 +1,14 @@
 <?php
 
+namespace SWN_Deluxe;
+
+defined('ABSPATH') || exit;
+
 /**
- * Wheel Items Management Page
+ * Wheel Items List Page
  *
  * @package SWN_Deluxe
  */
-
-use SWN_Deluxe\Admin;
-use \SWN_Deluxe\Wheel_Items;
-
-if (! defined('ABSPATH')) exit;
 
 ?>
 

@@ -4,6 +4,9 @@ namespace SWN_Deluxe\Handle_Spin;
 
 use SWN_Deluxe\Wheel_Items;
 
+defined('ABSPATH') || exit;
+
+
 class Prize_Selector
 {
     public function select_random_prize(int $wheel_id)

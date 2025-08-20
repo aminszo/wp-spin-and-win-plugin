@@ -1,5 +1,10 @@
 <?php
 
+namespace SWN_Deluxe;
+
+defined('ABSPATH') || exit;
+
+
 /**
  * Admin Wheels Class
  *
@@ -12,12 +17,6 @@
  * 
  * @package SWN_Deluxe
  */
-
-namespace SWN_Deluxe;
-
-if (! defined('ABSPATH')) exit;
-
-
 class Admin_Wheels
 {
 

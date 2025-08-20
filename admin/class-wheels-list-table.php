@@ -1,19 +1,20 @@
 <?php
 
-/**
- * Wheels List Table
- *
- * @package SWN_Deluxe
- */
-
 namespace SWN_Deluxe;
 
-if (! defined('ABSPATH')) exit;
+defined('ABSPATH') || exit;
+
 
 if (! class_exists('\WP_List_Table')) {
     require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
+
+/**
+ * Wheels List Table
+ *
+ * @package SWN_Deluxe
+ */
 class Wheels_List_Table extends \WP_List_Table
 {
 

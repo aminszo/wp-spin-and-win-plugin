@@ -34,12 +34,12 @@ define('SWN_DELUXE_PLUGIN_URL', plugin_dir_url(__FILE__));
 require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-init.php';
 
 /**
+ * Initialize plugin
+ */
+\SWN_Deluxe\Init::init();
+
+/**
  * Activation & deactivation hooks
  */
 register_activation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'create_tables']);
 register_deactivation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'delete_tables']);
-
-/**
- * Initialize plugin
- */
-\SWN_Deluxe\Init::init();

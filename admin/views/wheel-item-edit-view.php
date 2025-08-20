@@ -2,6 +2,8 @@
 
 namespace SWN_Deluxe;
 
+defined('ABSPATH') || exit;
+
 $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id'])) : null;
 
 ?>
