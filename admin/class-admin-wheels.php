@@ -79,7 +79,7 @@ class Admin_Wheels
         $list_table = new Wheels_List_Table();
         $list_table->prepare_items();
 
-        include "templates/wheels-list-page.php";
+        include "views/wheels-list-view.php";
     }
 
 
@@ -143,6 +143,6 @@ class Admin_Wheels
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }
 
-        include "templates/wheel-edit-page.php";
+        include "views/wheel-edit-view.php";
     }
 }

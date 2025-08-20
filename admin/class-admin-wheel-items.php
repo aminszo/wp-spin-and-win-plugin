@@ -89,7 +89,7 @@ class Admin_Wheel_Items
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }
 
-        include "templates/wheel-items-list-page.php";
+        include "views/wheel-items-list-view.php";
     }
 
     public static function render_edit_item()
@@ -134,6 +134,6 @@ class Admin_Wheel_Items
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }
 
-        include "templates/wheel-item-edit-page.php";
+        include "views/wheel-item-edit-view.php";
     }
 }
