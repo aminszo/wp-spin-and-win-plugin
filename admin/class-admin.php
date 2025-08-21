@@ -41,7 +41,9 @@ class Admin
             'manage_options', // Capability
             self::MENU_SLUGS['PARENT_MENU'],   // Menu slug
             [Admin_Settings::class, 'render_settings_page'], // this method does not exist yet
-            'dashicons-awards', // Icon
+            'data:image/svg+xml;base64,' . base64_encode(
+                file_get_contents(SWN_DELUXE_PLUGIN_DIR . '/assets/image/menu-icon.svg')
+            ), //'dashicons-awards', // Icon
             30 // Position
         );
 
