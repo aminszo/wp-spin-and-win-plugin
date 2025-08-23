@@ -34,6 +34,8 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-seeder.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-chance.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-log.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
         // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
         // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';

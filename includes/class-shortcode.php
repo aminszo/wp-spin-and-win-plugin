@@ -104,7 +104,7 @@ class Shortcode
             'outer_radius' => 200,
             'inner_radius' => 10,
             'pin_image_url' => null, //SWN_DELUXE_PLUGIN_URL . 'assets/image/pin.png',
-            'user_spin_chances' => 2,//is_user_logged_in() ? \SWN_User::get_spin_chances(get_current_user_id()) : 0,
+            'user_spin_chances' => is_user_logged_in() ? Spin_Chance::remaining($wheel['id'], $user_id, null) : 0,
             'not_logged_in_message' => __('Please log in to spin the wheel!', 'swn-deluxe'),
             'remaining_spins_text' => __('Remaining spin chances: %d', 'swn-deluxe'),
             'no_spins_message' => __('You have no spins left.', 'swn-deluxe'),
