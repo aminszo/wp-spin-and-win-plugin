@@ -11,8 +11,8 @@ class DB
     private static $tables = [
         'wheels'      => 'swn_wheels',
         'items'       => 'swn_wheel_items',
-        'results'     => 'swn_spin_logs',
-        'user_limits' => 'swn_spin_user_limits'
+        'logs'        => 'swn_spin_logs',
+        'chances'     => 'swn_spin_chances'
     ];
 
 
@@ -63,8 +63,8 @@ class DB
             KEY wheel_id (wheel_id)
         ) $charset_collate;";
 
-        // RESULTS TABLE
-        $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['results'] . " (
+        // LOGS TABLE
+        $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['logs'] . " (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             wheel_id BIGINT UNSIGNED NOT NULL,
             item_id BIGINT UNSIGNED NOT NULL,
@@ -72,7 +72,7 @@ class DB
             ip_address VARCHAR(45) NULL,
             session_id VARCHAR(255) NULL,
             spin_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            prize_claimed TINYINT(1) NOT NULL DEFAULT 0,
+            note VARCHAR(255) NULL,
             extra_data LONGTEXT NULL,
             PRIMARY KEY (id),
             KEY wheel_id (wheel_id),
@@ -81,14 +81,14 @@ class DB
             KEY ip_address (ip_address)
         ) $charset_collate;";
 
-        // USER LIMITS TABLE
-        $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['user_limits'] . " (
+        // SPIN CHANCES TABLE
+        $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['chances'] . " (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             wheel_id BIGINT UNSIGNED NOT NULL,
             user_id BIGINT UNSIGNED NULL,
             ip_address VARCHAR(45) NULL,
             last_spin DATETIME NULL,
-            spin_count INT UNSIGNED NOT NULL DEFAULT 0,
+            spin_chance INT UNSIGNED NOT NULL DEFAULT 0,
             PRIMARY KEY (id),
             KEY wheel_id (wheel_id),
             KEY user_id (user_id),
