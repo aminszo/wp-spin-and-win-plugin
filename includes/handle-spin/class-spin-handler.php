@@ -2,6 +2,10 @@
 
 namespace SWN_Deluxe\Handle_Spin;
 
+use SWN_Deluxe\Prize_Fulfillment;
+use SWN_Deluxe\Spin_Chance;
+use SWN_Deluxe\Spin_Log;
+
 defined('ABSPATH') || exit;
 
 
@@ -28,6 +32,12 @@ class Spin_Handler
         }
 
 
+        // $award   = Prize_Fulfillment::award($prize, $wheel_id, $user_id);
+
+        Spin_Log::add($wheel_id, $prize->id, $user_id);
+
+        Spin_Chance::decrement($wheel_id, $user_id, null);
+
         return [
             'success' => true,
             'data' => [
@@ -35,17 +45,5 @@ class Spin_Handler
                 'prize' => $prize,
             ]
         ];
-
-
-        // $awarder = new Prize_Awarder();
-        // $award   = $awarder->award($prize, $wheel_id, $user_id);
-
-        // Spin_History::log($wheel_id, $user_id, $prize['id']);
-
-        // return [
-        //     'success' => true,
-        //     'prize'   => $prize,
-        //     'message' => __('You won a prize!', 'swn-deluxe')
-        // ];
     }
 }

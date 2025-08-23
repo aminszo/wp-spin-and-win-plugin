@@ -2,6 +2,7 @@
 
 namespace SWN_Deluxe\Handle_Spin;
 
+use SWN_Deluxe\Spin_Chance;
 use \SWN_Deluxe\Wheels;
 
 defined('ABSPATH') || exit;
@@ -38,7 +39,13 @@ class Spin_Validator
         }
 
         // Check if the user has any remaining spin chances for this wheel
-        // This logic needs to be implemented
+        $remaining_spin_chances = Spin_Chance::remaining($wheel_id, $user_id, null);
+        if ($remaining_spin_chances <= 0) {
+            return [
+                'success' => false,
+                'data' => ['message' => __('You have no spins remaining for this wheel.', 'swn-deluxe')]
+            ];
+        }
 
         // All validations passed; the user is allowed to spin
         return ['success' => true];

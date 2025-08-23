@@ -7,7 +7,7 @@ defined('ABSPATH') || exit;
 
 class Prize_Fulfillment
 {
-    public function award($prize, int $wheel_id, int $user_id)
+    public static function award($prize, int $wheel_id, int $user_id)
     {
         // Example: If coupon
         if ($prize->type === 'coupon') {

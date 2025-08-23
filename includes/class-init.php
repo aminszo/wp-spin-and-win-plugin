@@ -84,6 +84,11 @@ class Init
         // DB::create_tables();
         // Seeder::seed_sample_data();
 
+        // $users = get_users(['fields' => 'ID']);
+        // foreach ($users as $user_id) {
+        //     Spin_Chance::set(1, $user_id, null, 1);
+        // }
+
         // Initialize AJAX hooks
         \SWN_Deluxe\Handle_Spin\AJAX::init();
 
