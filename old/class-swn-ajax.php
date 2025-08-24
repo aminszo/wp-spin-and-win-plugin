@@ -139,12 +139,7 @@ class SWN_Ajax
                     }
                     $result['details'] = sprintf(__('Coupon Code: %s <br> Use this to order free sample boxes.', 'swn-deluxe'), $coupon_code);
 
-                    $text_1 = <<<TEXT
-تبریک!
-شما در گردونه شانس می‌کافه برنده دریافت %sample-count% سمپل رایگان قهوه (به انتخاب خودتان) شده‌اید.
-کد تخفیف: %coupon-code%
-برای سفارش رایگان سمپل قهوه های مورد علاقه خود از این کد تخفیف استفاده فرمایید.
-TEXT;
+
                     $replacements = [
                         '%sample-count%' => $coupon_code_x_items,
                         '%coupon-code%' => $coupon_code,
@@ -183,11 +178,7 @@ TEXT;
                     // my_custom_credit_system_add_credits($user_id, $credit_amount);
                     $result['details'] = sprintf(__('%d credits added to your account.', 'swn-deluxe'), $credit_amount);
 
-                    $text_2 = <<<TEXT
-تبریک!
-شما در گردونه شانس می‌کافه برنده %credit% هزار تومان اعتبار خرید شده‌اید.
-این اعتبار به حساب کاربری شما اضافه شده و در خرید های آتی قابل استفاده است.
-TEXT;
+
                     $replacements = [
                         '%credit%' => $credit_amount,
                     ];
@@ -231,12 +222,7 @@ TEXT;
                     }
                     $result['details'] = sprintf(__('Coupon Code: %s', 'swn-deluxe'), $coupon_code);
 
-                    $text_3 = <<<TEXT
-تبریک!
-شما در گردونه شانس می‌کافه کد تخفیف %percent% درصدی خرید دریافت کرده اید.
-کد تخفیف شما: %coupon-code%
-می‌توانید از این کد در خرید بعدی خود از فروشگاه استفاده فرمایید.
-TEXT;
+
                     $replacements = [
                         '%percent%' => $coupon_code_percent,
                         '%coupon-code%' => $coupon_code,

@@ -1,3 +1,5 @@
+let segments;
+
 jQuery(document).ready(function ($) {
     /**
      * -----------------------------
@@ -30,7 +32,7 @@ jQuery(document).ready(function ($) {
     success_audio.load();
 
     // Wheel segments (prizes). Convert escaped "\n" into real line breaks for labels.
-    let segments = swn_params.segments.map(segment => ({
+    segments = swn_params.segments.map(segment => ({
         ...segment,
         text: segment.text.replace(/\\n/g, '\n')
     }));
@@ -242,14 +244,19 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 console.log(response)
-                return;
+
                 if (response.success) {
-                    // console.log("swn ajax success");
-                    // console.log(response);
-                    let winningSegmentNumber = parseInt(response.data.stop_at_segment);
-                    if (theWheel && typeof theWheel.startAnimation === 'function' && winningSegmentNumber > 0) {
+                    console.log("swn ajax success");
+                    let winningSegmentIndex = segments.findIndex(item => item.id === response.data.prize.id);
+                    // winWheel uses indexes for wheel segments starting from 1, not 0, so we add 1 to the found index.
+                    winningSegmentIndex++;
+                    console.log(segments);
+                    if (theWheel && typeof theWheel.startAnimation === 'function' && winningSegmentIndex >= 0) {
                         // Calculate exact angle for chosen segment
-                        let stopAtAngle = theWheel.getRandomForSegment(winningSegmentNumber);
+                        let stopAtAngle = theWheel.getRandomForSegment(winningSegmentIndex);
+                        console.log(winningSegmentIndex);
+                        console.log(stopAtAngle);
+
                         theWheel.animation.stopAngle = stopAtAngle;
 
                         // Store prize data to show after animation

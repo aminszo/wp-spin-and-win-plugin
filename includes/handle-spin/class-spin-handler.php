@@ -38,6 +38,13 @@ class Spin_Handler
 
         Spin_Chance::decrement($wheel_id, $user_id, null);
 
+
+        /*
+        * Required fields for the prize object (used in the frontend) so far are:
+        * - id
+        * 
+        */
+
         return [
             'success' => true,
             'data' => [

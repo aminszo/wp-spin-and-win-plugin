@@ -82,7 +82,7 @@ class Shortcode
             $segments[] = array(
                 'fillStyle' => !empty($item->segment_color) ? sanitize_hex_color($item->segment_color) : '#' . substr(md5(rand()), 0, 6), // Random color if not set
                 'text'      => $item->display_name,
-                'id'        => $index // Or a unique prize ID
+                'id'        => $item->id // unique prize ID
             );
         }
 

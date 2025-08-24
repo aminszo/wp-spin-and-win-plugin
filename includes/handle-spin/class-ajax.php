@@ -23,7 +23,7 @@ class AJAX
     public static function init()
     {
         add_action('wp_ajax_swn_spin_wheel', [self::class, 'spin_wheel']);
-        add_action('wp_ajax_nopriv_swn_spin_wheel', [self::class, 'spin_wheel']);
+        add_action('wp_ajax_nopriv_swn_spin_wheel', [self::class, 'spin_wheel']); // added wp_ajax_nopriv_ because guest users may be able to spin some wheels in future
     }
 
     /**
