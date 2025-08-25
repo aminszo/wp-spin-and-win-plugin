@@ -78,6 +78,10 @@ class Admin_Wheels
         $list_table = new Wheels_List_Table();
         $list_table->prepare_items();
 
+        // Display notice if set
+        Admin::display_notice(self::messages_list());
+
+
         include "views/wheels-list-view.php";
     }
 
@@ -117,35 +121,68 @@ class Admin_Wheels
             ];
 
             if ($wheel_id > 0) {
-                Wheels::update($wheel_id, $data);
-            } else {
-                $wheel_id = Wheels::insert($data);
-            }
+                $result = Wheels::update($wheel_id, $data);
+                $message = $result ? 'update-success' : 'update-fail';
 
-            // Redirect back to the wheels list after saving.
-            wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']));
-            exit;
+                // Redirect back to the wheels list after saving.
+                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_EDIT_PAGE'] . '&id=' . $wheel_id . '&message=' . $message));
+                exit;
+            } else {
+                $result = Wheels::insert($data);
+                $message = $result ? 'create-success' : 'create-fail';
+
+                // Redirect back to the wheels list after saving.
+                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE'] . '&message=' . $message));
+                exit;
+            }
         }
 
         // Handle wheel deletion request 
         if (isset($_POST['swn_delete_wheel']) && check_admin_referer('swn_delete_wheel_action', 'swn_delete_wheel_nonce')) {
             $wheel_id_to_delete = intval($_POST['wheel_id']);
             if ($wheel_id_to_delete > 0) {
-                Wheels::delete($wheel_id_to_delete);
-                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE'] . '&deleted=1'));
+                $result = Wheels::delete($wheel_id_to_delete);
+                $message = $result ? 'delete-success' : 'delete-fail';
+
+                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE'] . '&message=' . $message));
                 exit;
             }
         }
 
         // Display notice if set
-        if (!empty($_GET['deleted'])) {
-            $notice_message = __('Wheel deleted successfully.', 'swn-deluxe');
-        }
+        Admin::display_notice(self::messages_list());
 
-        if ($notice_message) {
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
-        }
 
         include "views/wheel-edit-view.php";
+    }
+
+    public static function messages_list()
+    {
+        return [
+            'create-success' => [
+                'type' => 'success',
+                'message' => __('Wheel created successfully.', 'swn-deluxe'),
+            ],
+            'create-fail' => [
+                'type' => 'error',
+                'message' => __('Wheel createtion failed.', 'swn-deluxe'),
+            ],
+            'update-success' => [
+                'type' => 'success',
+                'message' => __('Wheel Updated successfully.', 'swn-deluxe'),
+            ],
+            'update-fail' => [
+                'type' => 'error',
+                'message' => __('Wheel Update failed.', 'swn-deluxe'),
+            ],
+            'delete-success' => [
+                'type' => 'success',
+                'message' => __('Wheel deleted successfully.', 'swn-deluxe'),
+            ],
+            'delete-fail' => [
+                'type' => 'error',
+                'message' => __('Wheel delete failed.', 'swn-deluxe'),
+            ],
+        ];
     }
 }

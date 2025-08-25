@@ -95,4 +95,17 @@ class Admin
         }
         return false;
     }
+
+    public static function display_notice($messages_list)
+    {
+        if (!empty($_GET['message'])) {
+            $message_id = $_GET['message'];
+
+            $notice = $messages_list[$message_id] ?? null;
+
+            if (!empty($notice)) {
+                echo '<div class="notice notice-' . $notice['type'] . ' is-dismissible"><p>' . esc_html($notice['message']) . '</p></div>';
+            }
+        }
+    }
 }

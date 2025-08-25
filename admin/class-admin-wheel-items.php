@@ -149,7 +149,7 @@ class Admin_Wheel_Items
             $items = Wheel_Items::get_by_wheel($wheel_id);
         }
 
-        // Just before including the template
+        // // Display available notices before including the template
         if ($notice_message) {
             echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
         }

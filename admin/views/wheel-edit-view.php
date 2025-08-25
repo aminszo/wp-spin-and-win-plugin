@@ -17,7 +17,7 @@ $wheel = $wheel ?? (object) [
     'display_name' => '',
     'slug' => '',
     'status' => 'inactive',
-    'settings' => [],
+    'settings' => '',
 ];
 
 // Unserialize settings if needed
