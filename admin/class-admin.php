@@ -28,7 +28,6 @@ class Admin
 
         Admin_Wheels::init();
         Admin_Wheel_Items::init();
-        Admin_Settings::init();
     }
 
 

@@ -1,4 +1,6 @@
 <?php
+// these codes are not used in the plugin and they are just for test
+
 
 //on wheel creation
 $settings = json_decode($wheel->settings, true);
