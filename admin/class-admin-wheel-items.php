@@ -102,8 +102,7 @@ class Admin_Wheel_Items
         }
 
         $wheel = Wheels::get($wheel_id);
-        $items = Wheel_Items::get_by_wheel($wheel_id);
-
+        
         // Handle item save
         if (isset($_POST['swn_save_item']) && check_admin_referer('swn_save_item_action', 'swn_save_item_nonce')) {
 

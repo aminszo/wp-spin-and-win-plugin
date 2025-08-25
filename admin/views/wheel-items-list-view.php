@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
 
 <div class="wrap">
     <h1 class="wp-heading-inline">
-        <?php echo esc_html(sprintf(__('Manage Items for Wheel: %s', 'swn-deluxe'), $wheel->display_name)); ?>
+        <?php echo esc_html(sprintf(__('Manage Items for Wheel: %s', 'swn-deluxe'), $wheel->name)); ?>
         <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']); ?>" class="page-title-action"><?php _e('Back to Wheels', 'swn-deluxe'); ?></a>
     </h1>
 

@@ -11,8 +11,25 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
     <h1 class="wp-heading-inline">
         <?php echo $editing_item ? __('Edit Item', 'swn-deluxe') : __('Add New Item', 'swn-deluxe'); ?>
         <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE']) . '&wheel_id=' . $wheel_id ?>" class="page-title-action"><?php _e('Back to Items List', 'swn-deluxe'); ?></a>
-
     </h1>
+
+    <h2>
+        <?php
+        if ($editing_item) {
+            printf(
+                __('Editing Item "%s" on Wheel "%s"', 'swn-deluxe'),
+                esc_html($editing_item->name),
+                esc_html($wheel->name)
+            );
+        } else {
+            printf(
+                __('Add New Item to Wheel "%s"', 'swn-deluxe'),
+                esc_html($wheel->name)
+            );
+        }
+        ?>
+    </h2>
+
     <!-- Add/Edit Item Form -->
     <form method="post">
         <?php wp_nonce_field('swn_save_item_action', 'swn_save_item_nonce'); ?>
@@ -54,7 +71,7 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
             <tr>
                 <th><label for="probability"><?php _e('Probability', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="number" name="probability" id="probability" min="0" step="1" value="<?php echo $editing_item ? esc_attr($editing_item->probability) : 0; ?>" class="small-text">
+                    <input type="number" name="probability" id="probability" min="0" value="<?php echo $editing_item ? esc_attr($editing_item->probability) : 0; ?>" class="small-text">
                     <p class="description"><?php _e('Relative weight for this prize. Higher numbers make the item more likely to be selected compared to others, but it is not a percentage.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
@@ -68,7 +85,7 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
             <tr>
                 <th><label for="sort_order"><?php _e('Sort Order', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="number" name="sort_order" id="sort_order" value="<?php echo $editing_item ? esc_attr($editing_item->sort_order) : 0; ?>" class="small-text">
+                    <input type="number" name="sort_order" id="sort_order" min="0" value="<?php echo $editing_item ? esc_attr($editing_item->sort_order) : 0; ?>" class="small-text">
                     <p class="description"><?php _e('Determines the order of appearance for segments. Lower numbers appear earlier in rendering.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
