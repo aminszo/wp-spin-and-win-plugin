@@ -47,18 +47,12 @@ class DB
         ) $charset_collate;";
 
         // ITEMS TABLE
-
-        /*
-        * 'Value' column is not used anymore and can be deleted, because now we save the value (percent, credit amount,...) in json in options coloumn.
-        *
-        */
         $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['items'] . " (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             wheel_id BIGINT UNSIGNED NOT NULL,
             name VARCHAR(255) NOT NULL,
             display_name VARCHAR(255) NOT NULL,
             type TEXT NOT NULL DEFAULT 'coupon',
-            value TEXT NULL,
             probability DECIMAL(5,2) NOT NULL DEFAULT 0.00,
             segment_color VARCHAR(20) NULL,
             sort_order INT UNSIGNED NOT NULL DEFAULT 0,

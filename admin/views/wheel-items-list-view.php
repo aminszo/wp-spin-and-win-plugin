@@ -31,7 +31,6 @@ defined('ABSPATH') || exit;
                 <th><?php _e('Name', 'swn-deluxe'); ?></th>
                 <th><?php _e('Display Name', 'swn-deluxe'); ?></th>
                 <th><?php _e('Type', 'swn-deluxe'); ?></th>
-                <th><?php _e('Value', 'swn-deluxe'); ?></th>
                 <th><?php _e('Probability', 'swn-deluxe'); ?></th>
                 <th><?php _e('Color', 'swn-deluxe'); ?></th>
                 <th><?php _e('Sort Order', 'swn-deluxe'); ?></th>
@@ -45,7 +44,6 @@ defined('ABSPATH') || exit;
                         <td><?php echo esc_html($item->name); ?></td>
                         <td><?php echo esc_html($item->display_name); ?></td>
                         <td><?php echo esc_html($item->type); ?></td>
-                        <td><?php echo esc_html($item->value); ?></td>
                         <td><?php echo esc_html($item->probability); ?></td>
                         <td>
                             <span style="display:inline-block;width:24px;height:24px;background-color:<?php echo esc_attr($item->segment_color); ?>;border:1px solid #000;"></span>

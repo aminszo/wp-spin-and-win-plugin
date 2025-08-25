@@ -54,7 +54,7 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
             <tr>
                 <th><label for="probability"><?php _e('Probability', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="number" name="probability" id="probability" step="0.01" value="<?php echo $editing_item ? esc_attr($editing_item->probability) : 0; ?>" class="small-text">
+                    <input type="number" name="probability" id="probability" min="0" step="1" value="<?php echo $editing_item ? esc_attr($editing_item->probability) : 0; ?>" class="small-text">
                     <p class="description"><?php _e('Relative weight for this prize. Higher numbers make the item more likely to be selected compared to others, but it is not a percentage.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
