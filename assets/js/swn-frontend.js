@@ -34,7 +34,7 @@ jQuery(document).ready(function ($) {
     // Wheel segments (prizes). Convert escaped "\n" into real line breaks for labels.
     segments = swn_params.segments.map(segment => ({
         ...segment,
-        text: segment.text.replace(/\\n/g, '\n')
+        text: segment.text.replace(/\\\\n/g, '\n')
     }));
 
     // console.log(segments);

@@ -11,7 +11,7 @@ class Prize_Fulfillment
     {
         $result['details'] = '';
         switch ($prize->type) {
-            case 'product':
+            case 'free-product':
                 $result = self::give_free_product($prize, $user_id);
                 break;
 
