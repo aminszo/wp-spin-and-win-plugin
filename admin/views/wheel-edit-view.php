@@ -5,7 +5,7 @@ namespace SWN_Deluxe;
 defined('ABSPATH') || exit;
 
 /**
- * Wheel Edit Page
+ * Wheel Edit/Create Page
  *
  * @package SWN_Deluxe
  */
@@ -21,7 +21,7 @@ $wheel = $wheel ?? (object) [
 ];
 
 // Unserialize settings if needed
-$wheel_settings = maybe_unserialize($wheel->settings);
+$wheel_settings = json_decode($wheel->settings, true);
 ?>
 
 <div class="wrap">
@@ -75,10 +75,16 @@ $wheel_settings = maybe_unserialize($wheel->settings);
 
             <!-- Optional settings: you can expand this later -->
             <tr>
-                <th scope="row"><?php esc_html_e('Settings', 'swn-deluxe'); ?></th>
+                <th scope="row">
+                    <label for="new_user_chances"><?php _e('Initial Spin Chances For New Users', 'swn-deluxe'); ?></label>
+                </th>
                 <td>
-                    <textarea name="settings" rows="5" class="large-text"><?php echo esc_textarea(json_encode($wheel_settings, JSON_PRETTY_PRINT)); ?></textarea>
-                    <p class="description"><?php esc_html_e('Enter wheel settings as JSON.', 'swn-deluxe'); ?></p>
+                    <input type="number"
+                        name="settings[new_user_chances]"
+                        id="new_user_chances"
+                        value="<?php echo esc_attr($wheel_settings['new_user_chances'] ?? 0); ?>"
+                        min="0" />
+                    <p class="description"><?php _e('How many spin chances a new user gets when they register.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
         </table>

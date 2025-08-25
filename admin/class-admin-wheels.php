@@ -104,12 +104,16 @@ class Admin_Wheels
 
         // Handle form submission.
         if (isset($_POST['swn_save_wheel']) && check_admin_referer('swn_save_wheel_action', 'swn_save_wheel_nonce')) {
+
+            $settings = isset($_POST['settings']) ? (array) $_POST['settings'] : [];
+            $settings = array_map('sanitize_text_field', $settings);
+
             $data = [
                 'name'         => sanitize_text_field($_POST['name']),
                 'display_name' => sanitize_text_field($_POST['display_name']),
                 'slug'         => sanitize_title($_POST['slug']),
                 'status'       => in_array($_POST['status'], ['active', 'inactive']) ? $_POST['status'] : 'inactive',
-                'settings'     => maybe_serialize($_POST['settings'] ?? []),
+                'settings'    => wp_json_encode($settings),
             ];
 
             if ($wheel_id > 0) {
