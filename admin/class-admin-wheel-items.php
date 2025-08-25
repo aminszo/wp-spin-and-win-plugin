@@ -102,7 +102,7 @@ class Admin_Wheel_Items
         }
 
         $wheel = Wheels::get($wheel_id);
-        
+
         // Handle item save
         if (isset($_POST['swn_save_item']) && check_admin_referer('swn_save_item_action', 'swn_save_item_nonce')) {
 
@@ -158,28 +158,28 @@ class Admin_Wheel_Items
     {
         return [
             'create-success' => [
-                'type' => 'success',
-                'message' => __('New Item added successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The item has been added successfully.', 'swn-deluxe'),
             ],
             'create-fail' => [
-                'type' => 'error',
-                'message' => __('Item createtion failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to add the item. Please try again.', 'swn-deluxe'),
             ],
             'update-success' => [
-                'type' => 'success',
-                'message' => __('Item Updated successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The item has been updated successfully.', 'swn-deluxe'),
             ],
             'update-fail' => [
-                'type' => 'error',
-                'message' => __('Item Update failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to update the item. Please try again.', 'swn-deluxe'),
             ],
             'delete-success' => [
-                'type' => 'success',
-                'message' => __('Item deleted successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The item has been deleted successfully.', 'swn-deluxe'),
             ],
             'delete-fail' => [
-                'type' => 'error',
-                'message' => __('Item delete failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to delete the item. Please try again.', 'swn-deluxe'),
             ],
         ];
     }

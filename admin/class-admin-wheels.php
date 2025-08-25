@@ -160,28 +160,28 @@ class Admin_Wheels
     {
         return [
             'create-success' => [
-                'type' => 'success',
-                'message' => __('Wheel created successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The wheel has been created successfully.', 'swn-deluxe'),
             ],
             'create-fail' => [
-                'type' => 'error',
-                'message' => __('Wheel createtion failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to create the wheel. Please try again.', 'swn-deluxe'),
             ],
             'update-success' => [
-                'type' => 'success',
-                'message' => __('Wheel Updated successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The wheel has been updated successfully.', 'swn-deluxe'),
             ],
             'update-fail' => [
-                'type' => 'error',
-                'message' => __('Wheel Update failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to update the wheel. Please try again.', 'swn-deluxe'),
             ],
             'delete-success' => [
-                'type' => 'success',
-                'message' => __('Wheel deleted successfully.', 'swn-deluxe'),
+                'type'    => 'success',
+                'message' => __('The wheel has been deleted successfully.', 'swn-deluxe'),
             ],
             'delete-fail' => [
-                'type' => 'error',
-                'message' => __('Wheel delete failed.', 'swn-deluxe'),
+                'type'    => 'error',
+                'message' => __('Failed to delete the wheel. Please try again.', 'swn-deluxe'),
             ],
         ];
     }
