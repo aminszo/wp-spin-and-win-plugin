@@ -32,24 +32,19 @@ class Init
     {
         require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-db.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'db/class-seeder.php';
+
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheels.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-wheel-items.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-chance.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-log.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-coupon-code.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-sms.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-coupon-code.php';
 
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
-        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-fulfillment.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-selector.php';
-
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-fulfillment.php';
 
         if (is_admin()) {
             require_once SWN_DELUXE_PLUGIN_DIR . 'admin/class-admin.php';
@@ -72,23 +67,8 @@ class Init
             dirname(plugin_basename(SWN_DELUXE_PLUGIN_FILE)) . '/languages'
         );
 
-        // Core instances
-        // \SWN_DB::instance();
-        // \SWN_User::instance();
-        // \SWN_Ajax::instance();
-
         // Frontend shortcode
         Shortcode::init();
-
-        // Seed sample data (run it once, then comment it)
-        // DB::delete_tables();
-        // DB::create_tables();
-        // Seeder::seed_sample_data();
-
-        // $users = get_users(['fields' => 'ID']);
-        // foreach ($users as $user_id) {
-        //     Spin_Chance::set(1, $user_id, null, 2);
-        // }
 
         // Initialize AJAX hooks
         \SWN_Deluxe\Handle_Spin\AJAX::init();
@@ -97,5 +77,13 @@ class Init
         if (is_admin()) {
             Admin::init();
         }
+
+        // DB::refresh_with_seed();
+
+        // $users = get_users(['fields' => 'ID']);
+        // foreach ($users as $user_id) {
+        //     Spin_Chance::set(1, $user_id, null, 2);
+        // }
+
     }
 }

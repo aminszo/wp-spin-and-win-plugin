@@ -116,4 +116,29 @@ class DB
             $wpdb->query("DROP TABLE IF EXISTS {$table_name}");
         }
     }
+
+    /**
+     * Drop and recreate all plugin tables.
+     * 
+     * WARNING: This will delete ALL plugin data.
+     * Intended for development/testing only, not for production.
+     */
+
+    public static function refresh()
+    {
+        self::delete_tables();
+        self::create_tables();
+    }
+
+
+    /**
+     * Drop, recreate, and seed all plugin tables with sample data.
+     * 
+     * WARNING: This is destructive. Use only in development or testing.
+     */
+    public static function refresh_with_seed()
+    {
+        self::refresh();
+        Seeder::seed_sample_data();
+    }
 }
