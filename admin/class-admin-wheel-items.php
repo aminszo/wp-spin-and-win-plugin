@@ -106,14 +106,33 @@ class Admin_Wheel_Items
 
         // Handle item save
         if (isset($_POST['swn_save_item']) && check_admin_referer('swn_save_item_action', 'swn_save_item_nonce')) {
+
+            $type = sanitize_text_field($_POST['type']);
+            $options = [];
+
+            switch ($type) {
+                case 'coupon':
+                    $options['percent'] = intval($_POST['percent'] ?? 0);
+                    break;
+
+                case 'credit':
+                    $options['credit_amount'] = intval($_POST['credit_amount'] ?? 0);
+                    break;
+
+                case 'free-product':
+                    $options['count'] = intval($_POST['count'] ?? 1);
+                    $options['product_category'] = intval($_POST['product_category'] ?? 0);
+                    break;
+            }
+
             $data = [
                 'wheel_id'      => $wheel_id,
                 'name'          => sanitize_text_field($_POST['name']),
                 'display_name'  => sanitize_text_field($_POST['display_name']),
-                'type'          => sanitize_text_field($_POST['type']),
-                'value'         => sanitize_text_field($_POST['value']),
+                'type'          => $type,
                 'probability'   => floatval($_POST['probability']),
                 'segment_color' => sanitize_text_field($_POST['segment_color']),
+                'options'       => wp_json_encode($options),
                 'sort_order'    => intval($_POST['sort_order']),
             ];
 

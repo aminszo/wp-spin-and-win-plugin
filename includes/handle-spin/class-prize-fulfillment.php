@@ -35,11 +35,13 @@ class Prize_Fulfillment
     public static function give_free_product($prize, $user_id)
     {
         $result = [];
+
+        $options = json_decode($prize->options, true) ?: [];
         // Example: Integrate with WooCommerce to give a coupon
         if (class_exists('WooCommerce')) {
-            $coupon_code_x_items = sanitize_text_field($prize->value); // 'value' stores the coupon code free products  number
+            $coupon_code_x_items = sanitize_text_field($options['count']); // 'value' stores the coupon code free products  number
             $coupon_code = Coupon_Code::generate_coupon_for_specific_product_category(
-                'coffee-sample',
+                $options['product_category'],
                 $coupon_code_x_items,
                 "Congratulations! You won $coupon_code_x_items free sample box!",
                 0 // never expires
@@ -74,7 +76,8 @@ class Prize_Fulfillment
     public static function give_credit($prize,  $user_id)
     {
         $result = [];
-        $credit_amount = intval($prize->value);
+        $options = json_decode($prize->options, true) ?: [];
+        $credit_amount = intval($options['credit_amount']);
         // Integrate with your custom credit system
 
         if (true) {
@@ -101,8 +104,10 @@ class Prize_Fulfillment
     public static function give_discount_coupon($prize,  $user_id)
     {
         $result = [];
+        $options = json_decode($prize->options, true) ?: [];
+
         if (class_exists('WooCommerce')) {
-            $coupon_code_percent = sanitize_text_field($prize->value); // 'value' stores the coupon code percent
+            $coupon_code_percent = $options['percent'];
             $coupon_code = Coupon_Code::generate_coupon(
                 $coupon_code_percent,
                 'percent',

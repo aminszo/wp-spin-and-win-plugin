@@ -12,6 +12,17 @@ document.addEventListener('click', function (e) {
 });
 
 
+jQuery(document).ready(function ($) {
+    function toggleFields() {
+        var type = $('#type').val();
+        $('.type-field').hide();
+        $('.field-' + type).show();
+    }
+    $('#type').on('change', toggleFields);
+    toggleFields();
+});
+
+
 
 
 // jQuery(document).ready(function ($) {
