@@ -79,16 +79,16 @@ class Admin_Wheel_Items
         if (isset($_POST['swn_delete_item']) && check_admin_referer('swn_delete_item_action', 'swn_delete_item_nonce')) {
             $item_id = intval($_POST['item_id']);
             if ($item_id > 0) {
-                Wheel_Items::delete($item_id);
-                $notice_message = __('Item deleted successfully.', 'swn-deluxe');
-                // Refresh the items list
-                $items = Wheel_Items::get_by_wheel($wheel_id);
+                $result = Wheel_Items::delete($item_id);
+                $message = $result ? 'delete-success' : 'delete-fail';
+
+                wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'] . '&wheel_id=' . $wheel_id . '&message=' . $message));
+                exit;
             }
         }
 
-        if ($notice_message) {
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
-        }
+        // Display notice if set
+        Admin::display_notice(self::messages_list());
 
         include "views/wheel-items-list-view.php";
     }
@@ -138,22 +138,50 @@ class Admin_Wheel_Items
 
             $item_id = isset($_POST['item_id']) ? intval($_POST['item_id']) : 0;
             if ($item_id > 0) {
-                Wheel_Items::update($item_id, $data);
-                $notice_message = __('Item updated successfully.', 'swn-deluxe');
+                $result = Wheel_Items::update($item_id, $data);
+                $message = $result !== false ? 'update-success' : 'update-fail';
             } else {
-                Wheel_Items::insert($data);
-                $notice_message = __('New Item added successfully.', 'swn-deluxe');
+                $result = Wheel_Items::insert($data);
+                $message = $result ? 'create-success' : 'create-fail';
             }
 
-            // Refresh the items list
-            $items = Wheel_Items::get_by_wheel($wheel_id);
+            wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEMS_LIST_PAGE'] . '&wheel_id=' . $wheel_id . '&message=' . $message));
+            exit;
         }
 
-        // // Display available notices before including the template
-        if ($notice_message) {
-            echo '<div class="notice notice-success is-dismissible"><p>' . esc_html($notice_message) . '</p></div>';
-        }
+        // Display notice if set
+        Admin::display_notice(self::messages_list());
 
         include "views/wheel-item-edit-view.php";
+    }
+
+    public static function messages_list()
+    {
+        return [
+            'create-success' => [
+                'type' => 'success',
+                'message' => __('New Item added successfully.', 'swn-deluxe'),
+            ],
+            'create-fail' => [
+                'type' => 'error',
+                'message' => __('Item createtion failed.', 'swn-deluxe'),
+            ],
+            'update-success' => [
+                'type' => 'success',
+                'message' => __('Item Updated successfully.', 'swn-deluxe'),
+            ],
+            'update-fail' => [
+                'type' => 'error',
+                'message' => __('Item Update failed.', 'swn-deluxe'),
+            ],
+            'delete-success' => [
+                'type' => 'success',
+                'message' => __('Item deleted successfully.', 'swn-deluxe'),
+            ],
+            'delete-fail' => [
+                'type' => 'error',
+                'message' => __('Item delete failed.', 'swn-deluxe'),
+            ],
+        ];
     }
 }

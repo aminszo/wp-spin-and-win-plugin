@@ -122,7 +122,7 @@ class Admin_Wheels
 
             if ($wheel_id > 0) {
                 $result = Wheels::update($wheel_id, $data);
-                $message = $result ? 'update-success' : 'update-fail';
+                $message = $result !== false ? 'update-success' : 'update-fail';
 
                 // Redirect back to the wheels list after saving.
                 wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_EDIT_PAGE'] . '&id=' . $wheel_id . '&message=' . $message));

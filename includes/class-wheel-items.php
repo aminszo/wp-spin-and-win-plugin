@@ -72,7 +72,7 @@ class Wheel_Items
     {
         global $wpdb;
         $table = DB::get_table_name('items');
-        $wpdb->update($table, $data, ['id' => $id]);
+        return $wpdb->update($table, $data, ['id' => $id]);
     }
 
 
@@ -86,7 +86,7 @@ class Wheel_Items
     {
         global $wpdb;
         $table = DB::get_table_name('items');
-        $wpdb->delete($table, ['id' => $id]);
+        return $wpdb->delete($table, ['id' => $id]);
     }
 
 
@@ -102,6 +102,6 @@ class Wheel_Items
     {
         global $wpdb;
         $table = DB::get_table_name('items');
-        $wpdb->delete($table, ['wheel_id' => $wheel_id]);
+        return $wpdb->delete($table, ['wheel_id' => $wheel_id]);
     }
 }
