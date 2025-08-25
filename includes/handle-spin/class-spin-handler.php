@@ -32,13 +32,18 @@ class Spin_Handler
         }
 
 
-        // $award   = Prize_Fulfillment::award($prize, $wheel_id, $user_id);
+        $result = Prize_Fulfillment::award($prize, $wheel_id, $user_id);
+
+        $prize_awarded_details = $result['details'];
+        $prize_sms = $result['sms'];
+        $sms_patern_code = $prize_sms['pattern_code'];
+        $sms_variables = $prize_sms['variables'];
+
+        // SMS:Send($sms_patern_code, $sms_variables);
 
         Spin_Log::add($wheel_id, $prize->id, $user_id);
 
         Spin_Chance::decrement($wheel_id, $user_id, null);
-
-
         /*
         * Required fields for the prize object (used in the frontend) so far are:
         * - id
@@ -50,6 +55,7 @@ class Spin_Handler
             'data' => [
                 'message' => __('you won a prize', 'swn-deluxe'),
                 'prize' => $prize,
+                'prize_details' => $prize_awarded_details,
             ]
         ];
     }

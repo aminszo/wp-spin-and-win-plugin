@@ -19,7 +19,7 @@ class Coupon_Code
      *
      * @return string|bool The generated coupon code on success, or false on failure.
      */
-    function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 0)
+    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 0)
     {
 
         // Ensure WooCommerce is active and required classes are available.
@@ -74,7 +74,7 @@ class Coupon_Code
         return false;
     }
 
-    function generate_coupon_for_specific_product_category($category_slug, $x_items, $description = '', $expiry_days = 0)
+    public static function generate_coupon_for_specific_product_category($category_slug, $x_items, $description = '', $expiry_days = 0)
     {
 
         // Ensure WooCommerce is active and required classes are available.

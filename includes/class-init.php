@@ -37,6 +37,7 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-chance.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-log.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-coupon-code.php';
         // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-db.php';
         // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-user.php';
         // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-swn-ajax.php';
@@ -46,7 +47,7 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-validator.php';
-        // require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-history.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-fullfilment.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-prize-selector.php';
 
 
@@ -86,7 +87,7 @@ class Init
 
         // $users = get_users(['fields' => 'ID']);
         // foreach ($users as $user_id) {
-        //     Spin_Chance::set(1, $user_id, null, 1);
+        //     Spin_Chance::set(1, $user_id, null, 2);
         // }
 
         // Initialize AJAX hooks
