@@ -54,7 +54,7 @@ defined('ABSPATH') || exit;
                         <td>
                             <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEEL_ITEM_EDIT_PAGE'] . '&wheel_id=' . $wheel_id . '&item_id=' . $item->id); ?>" class="button"><?php _e('Edit', 'swn-deluxe'); ?></a>
 
-                            <form method="post" style="display:inline;">
+                            <form method="post" style="display:inline;" onsubmit="return confirm('<?php esc_attr_e('Are you sure you want to delete this item? This cannot be undone.', 'swn-deluxe'); ?>');">
                                 <?php wp_nonce_field('swn_delete_item_action', 'swn_delete_item_nonce'); ?>
                                 <input type="hidden" name="item_id" value="<?php echo esc_attr($item->id); ?>">
                                 <?php submit_button(__('Delete', 'swn-deluxe'), 'delete', 'swn_delete_item', false); ?>

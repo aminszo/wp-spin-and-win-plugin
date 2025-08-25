@@ -27,6 +27,8 @@ $wheel_settings = json_decode($wheel->settings, true);
 <div class="wrap">
     <h1>
         <?php echo $wheel->id ? esc_html__('Edit Wheel', 'swn-deluxe') : esc_html__('Add New Wheel', 'swn-deluxe'); ?>
+        <a href="<?php echo admin_url('admin.php?page=' . Admin::MENU_SLUGS['WHEELS_LIST_PAGE']) ?>" class="page-title-action"><?php _e('Back to Wheels List', 'swn-deluxe'); ?></a>
+
     </h1>
 
     <form method="post">
