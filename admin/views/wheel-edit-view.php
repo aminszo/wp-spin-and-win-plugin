@@ -41,6 +41,7 @@ $wheel_settings = json_decode($wheel->settings, true);
                 </th>
                 <td>
                     <input name="name" type="text" id="name" value="<?php echo esc_attr($wheel->name); ?>" class="regular-text" required>
+                    <p class="description"><?php esc_html_e('Internal name of the wheel. This is used for identifying the wheel inside the system and is not shown to users.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 
@@ -50,6 +51,7 @@ $wheel_settings = json_decode($wheel->settings, true);
                 </th>
                 <td>
                     <input name="display_name" type="text" id="display_name" value="<?php echo esc_attr($wheel->display_name); ?>" class="regular-text" required>
+                    <p class="description"><?php esc_html_e('The public-facing name of the wheel. This will be shown to users.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 
@@ -59,7 +61,7 @@ $wheel_settings = json_decode($wheel->settings, true);
                 </th>
                 <td>
                     <input name="slug" type="text" id="slug" value="<?php echo esc_attr($wheel->slug); ?>" class="regular-text">
-                    <p class="description"><?php esc_html_e('Unique identifier for this wheel.', 'swn-deluxe'); ?></p>
+                    <p class="description"><?php esc_html_e('A unique identifier for the wheel. The slug is used in the shortcode (only lowercase, numbers and hyphens are allowed).', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 
@@ -72,6 +74,7 @@ $wheel_settings = json_decode($wheel->settings, true);
                         <option value="active" <?php selected($wheel->status, 'active'); ?>><?php esc_html_e('Active', 'swn-deluxe'); ?></option>
                         <option value="inactive" <?php selected($wheel->status, 'inactive'); ?>><?php esc_html_e('Inactive', 'swn-deluxe'); ?></option>
                     </select>
+                    <p class="description"><?php esc_html_e('Determines whether the wheel is active or inactive. Inactive wheels will not be available for users to spin.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 
@@ -86,7 +89,7 @@ $wheel_settings = json_decode($wheel->settings, true);
                         id="new_user_chances"
                         value="<?php echo esc_attr($wheel_settings['new_user_chances'] ?? 0); ?>"
                         min="0" />
-                    <p class="description"><?php _e('How many spin chances a new user gets when they register.', 'swn-deluxe'); ?></p>
+                    <p class="description"><?php _e('How many spin chances a new user receives for this wheel when they register.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
         </table>
