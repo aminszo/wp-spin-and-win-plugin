@@ -7,27 +7,11 @@ defined('ABSPATH') || exit;
 class Plugin_Settings
 {
 
-    const OPTION_KEY = 'swn_deluxe_settings';
-
     public static function init()
     {
         add_action('admin_post_swn_deluxe_save_settings', [__CLASS__, 'save_settings']);
     }
 
-
-    public static function get_settings()
-    {
-        $defaults = [
-            'sms_api_username'      => '',
-            'sms_api_password'      => '',
-            'pattern_sender_number' => '',
-            'text_sender_number'    => '',
-            'user_phone_meta_key'   => '',
-            'remove_data_on_uninstall' => 0,
-        ];
-        $options = get_option(self::OPTION_KEY, []);
-        return wp_parse_args($options, $defaults);
-    }
 
     public static function render_settings_page()
     {
@@ -35,7 +19,8 @@ class Plugin_Settings
             return;
         }
 
-        $settings = self::get_settings();
+        $option_key = Settings::OPTION_KEY;
+        $settings = Settings::get_settings();
 
         // Display notice if set
         Admin::display_notice(self::messages_list());
@@ -50,21 +35,13 @@ class Plugin_Settings
         }
         check_admin_referer('swn_deluxe_save_settings');
 
-        $input = $_POST[self::OPTION_KEY] ?? [];
-        $sanitized = [
-            'sms_api_username'      => sanitize_text_field($input['sms_api_username'] ?? ''),
-            'sms_api_password'      => sanitize_text_field($input['sms_api_password'] ?? ''),
-            'pattern_sender_number' => sanitize_text_field($input['pattern_sender_number'] ?? ''),
-            'text_sender_number'    => sanitize_text_field($input['text_sender_number'] ?? ''),
-            'user_phone_meta_key'   => sanitize_text_field($input['user_phone_meta_key'] ?? 'digits_phone'),
-            'remove_data_on_uninstall' => !empty($input['remove_data_on_uninstall']) ? 1 : 0,
-        ];
+        $input = $_POST[Settings::OPTION_KEY] ?? [];
 
-        $result = update_option(self::OPTION_KEY, $sanitized);
+        $result = Settings::update_settings($input);
 
         $message = $result !== false ? 'update-success' : '';
-        
-        wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['PARENT_MENU']. '&message=' . $message));
+
+        wp_safe_redirect(admin_url('admin.php?page=' . Admin::MENU_SLUGS['PARENT_MENU'] . '&message=' . $message));
         exit;
     }
 
