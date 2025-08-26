@@ -5,6 +5,7 @@ namespace SWN_Deluxe\Handle_Spin;
 use SWN_Deluxe\Prize_Fulfillment;
 use SWN_Deluxe\Spin_Chance;
 use SWN_Deluxe\Spin_Log;
+use SWN_Deluxe\SMS;
 
 defined('ABSPATH') || exit;
 
@@ -25,30 +26,28 @@ class Spin_Handler
         $prize    = $selector->select_random_prize($wheel_id);
 
         if (! $prize) {
+
+            Spin_Log::add($wheel_id, 0, $user_id, null, null, __('No prizes available.', 'swn-deluxe'));
+
             return [
                 'success' => false,
                 'data' => ['message' => __('No prizes available.', 'swn-deluxe')]
             ];
         }
 
-
         $result = Prize_Fulfillment::award($prize, $wheel_id, $user_id);
-
         $prize_awarded_details = $result['details'];
-        $prize_sms = $result['sms'];
-        $sms_patern_code = $prize_sms['pattern_code'];
-        $sms_variables = $prize_sms['variables'];
-
-        // SMS:Send($sms_patern_code, $sms_variables);
 
         Spin_Log::add($wheel_id, $prize->id, $user_id);
 
+        $sms_patern_code = $result['sms']['pattern_code'];
+        $sms_variables = $result['sms']['variables'];
+
+        if ($sms_patern_code && $sms_variables) {
+            // send sms here
+        }
+
         Spin_Chance::decrement($wheel_id, $user_id, null);
-        /*
-        * Required fields for the prize object (used in the frontend) so far are:
-        * - id
-        * 
-        */
 
         return [
             'success' => true,
