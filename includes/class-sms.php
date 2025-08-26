@@ -40,9 +40,11 @@ class SMS
         ];
 
         $response = self::do_curl_request($url, $params, true);
-        $status = self::parse_response_status($response);
+        $response = self::normalize_response($response);
 
-        return self::log_sms($user_id, $phone_number, $message, $status, json_encode($response));
+        $status = $response['success'] ? 'success' : 'failed';
+
+        return self::log_sms($user_id, $phone_number, $message, $status, $response['raw']);
     }
 
     /**
@@ -51,7 +53,7 @@ class SMS
     public static function send_with_pattern($phone_number, $pattern_code, $variables, $user_id = null)
     {
         if (!self::validate_phone($phone_number)) {
-            return self::log_sms($user_id, $phone_number, json_encode($variables), 'failed', 'Invalid phone number');
+            return self::log_sms($user_id, $phone_number, "Pattern: {$pattern_code}", 'failed', 'Invalid phone number');
         }
 
         $from = self::$default_pattern_sender_number;
@@ -63,9 +65,11 @@ class SMS
             . "&pattern_code=" . urlencode($pattern_code);
 
         $response = self::do_curl_request($url, $variables, false);
-        $status = self::parse_response_status($response);
+        $response = self::normalize_response($response);
 
-        return self::log_sms($user_id, $phone_number, "Pattern: {$pattern_code}", $status, json_encode($response));
+        $status = $response['success'] ? 'success' : 'failed';
+
+        return self::log_sms($user_id, $phone_number, "Pattern: {$pattern_code}",  $status, $response['raw']);
     }
 
     /**
@@ -86,42 +90,48 @@ class SMS
     }
 
     /**
-     * Normalize Iranian phone numbers into international format (+989XXXXXXXXX)
+     * Normalize Iranian phone numbers
      */
-    private static function normalize_phone($phone)
+    public static function normalize_phone($phone)
     {
         $phone = preg_replace('/\D/', '', $phone); // remove non-digits
 
-        // Already starts with country code (98XXXXXXXXXX)
-        if (preg_match('/^98\d{10}$/', $phone)) {
-            return "+$phone";
+        // Already without 0 or country code, like 919...
+        if (preg_match('/^\d{10}$/', $phone)) {
+            return $phone;
         }
 
         // Starts with 0, like 0919...
         if (preg_match('/^0\d{10}$/', $phone)) {
-            return '+98' . substr($phone, 1);
+            return substr($phone, 1);
         }
 
-        // Without 0 or country code, like 919...
-        if (preg_match('/^\d{10}$/', $phone)) {
-            return '+98' . $phone;
+        // starts with country code (98XXXXXXXXXX)
+        if (preg_match('/^98\d{10}$/', $phone)) {
+            return substr($phone, 2);
         }
 
-        // Already normalized with plus sign
+        // Starts with plus sign followed by country code, like +98XXXXXXXXXX
         if (preg_match('/^\+98\d{10}$/', $phone)) {
-            return $phone;
+            return substr($phone, 3);
+        }
+
+        // Starts with 00 followed by country code, like 0098XXXXXXXXXX
+        if (preg_match('/^0098\d{10}$/', $phone)) {
+            return substr($phone, 4);
         }
 
         return false; // unsupported format
     }
 
+
     /**
-     * Validate phone number (basic Iran format + global digits)
+     * Validate phone number (basic Iran format)
      */
-    private static function validate_phone($phone)
+    public static function validate_phone($phone)
     {
-        // must be +98XXXXXXXXXX (13 chars total)
-        return preg_match('/^\+989\d{9}$/', $phone);
+        // must be 9XXXXXXXXX (10 chars total)
+        return preg_match('/^9\d{9}$/', $phone);
     }
 
 
@@ -142,11 +152,30 @@ class SMS
         $response = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            $response = ['curl_error' => curl_error($ch)];
+            // cURL-level error (network, timeout, etc.)
+            $response = [
+                'success' => false,
+                'code'    => 102, // Curl error code
+                'message' => 'cURL error: ' . curl_error($ch),
+                'sms_id'  => null
+            ];
         } else {
             if ($decode_response) {
-                $response = json_decode($response, true);
-            }
+                $decoded = json_decode($response, true);
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $response = $decoded;
+                } else {
+                    // Invalid JSON from provider
+                    $response = [
+                        'success' => false,
+                        'code'    => 101, // parsing error
+                        'message' => 'Invalid response, unable to parse response.',
+                        'sms_id'  => null,
+                        'raw'     => $response
+                    ];
+                }
+            } // else: leave response as raw string; it will be normalized later
+
         }
 
         curl_close($ch);
@@ -184,7 +213,7 @@ class SMS
      * ------------------------------
      * [
      *     'success' => bool,          // true if sent successfully, false otherwise
-     *     'code'    => int,           // 0 for success, 100 for provider error, 101 for invalid/parsing errors
+     *     'code'    => int,           // 0 for success, 100 for unknown provider error, 101 for parsing error / invalid response
      *     'message' => string|null,   // error message if failed, null if success
      *     'sms_id'  => string|null,   // SMS ID if success, null if failed
      *     'raw'     => mixed          // raw response from provider (kept for debugging/logging)
@@ -195,10 +224,16 @@ class SMS
      */
     private static function normalize_response($raw)
     {
+
+        // Already normalized (e.g., cURL or JSON parse error)
+        if (is_array($raw) && isset($raw['success'])) {
+            return $raw;
+        }
+
         // Default fallback response for invalid or unexpected input.
         $response = [
             'success' => false,
-            'code'    => 101, // default = parsing/invalid response
+            'code'    => 101, // default = parsing error / invalid response
             'message' => 'Invalid response, unable to parse response.',
             'sms_id'  => null,
             'raw'     => $raw // keep raw response for debugging/logging
@@ -224,7 +259,7 @@ class SMS
             // Failure: [<error_code>, <error_message>]
             return [
                 'success' => false,
-                'code'    => $errorCode ?? 100, // if missing, fallback to provider error
+                'code'    => $errorCode ?? 100, // if missing, fallback to unknown provider error
                 'message' => $secondVal ?? 'Unknown provider error',
                 'sms_id'  => null,
                 'raw'     => $raw
@@ -249,8 +284,8 @@ class SMS
             // Failure: string error message
             return [
                 'success' => false,
-                'code'    => 100, // provider error
-                'message' => $trimmed ?: 'Empty provider response',
+                'code'    => 100, // unknown provider error
+                'message' => $trimmed ?: 'Unknown provider error',
                 'sms_id'  => null,
                 'raw'     => $raw
             ];
@@ -260,18 +295,6 @@ class SMS
         return $response;
     }
 
-
-    /**
-     * Parse API response and decide status
-     */
-    private static function parse_response_status($response)
-    {
-        if (isset($response['error'])) {
-            return 'failed';
-        }
-        // Assume ippanel returns status code 0 or >0 for success
-        return (is_array($response) && isset($response[0]) && $response[0] > 0) ? 'sent' : 'failed';
-    }
 
     /**
      * Log SMS into database
