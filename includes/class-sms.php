@@ -9,17 +9,23 @@ class SMS
 {
     private static $username;
     private static $password;
-    private static $default_pattern_sender_number = '+985000125475';
-    private static $default_text_sender_number = '+9810004223';
-    private static $default_meta_key = 'digits_phone';
+    private static $pattern_sender_number;
+    private static $text_sender_number;
+    private static $user_phone_meta_key;
+    private static $default_user_phone_meta = 'digits_phone';
 
     public static function init()
     {
-        $plugin_settings = get_option('swn_deluxe_settings', []);
+        $config = Settings::get_settings();
 
         // Load credentials from plugin settings
-        self::$username = $plugin_settings['sms_api_username'];
-        self::$password = $plugin_settings['sms_api_password'];
+        self::$username = $config['sms_api_username'];
+        self::$password = $config['sms_api_password'];
+        self::$pattern_sender_number = $config['pattern_sender_number'];
+        self::$text_sender_number = $config['text_sender_number'];
+        self::$user_phone_meta_key = !empty($config['user_phone_meta_key'])
+            ? $config['user_phone_meta_key']
+            : self::$default_user_phone_meta;
     }
 
     /**
@@ -35,7 +41,7 @@ class SMS
         $params = [
             'uname'   => self::$username,
             'pass'    => self::$password,
-            'from'    => self::$default_text_sender_number,
+            'from'    => self::$text_sender_number,
             'message' => $message,
             'to'      => json_encode([$phone_number]),
             'op'      => 'send'
@@ -58,7 +64,7 @@ class SMS
             return self::log_sms($user_id, $phone_number, "Pattern: {$pattern_code}", 'failed', 'Invalid phone number');
         }
 
-        $from = self::$default_pattern_sender_number;
+        $from = self::$pattern_sender_number;
 
         $url = "https://ippanel.com/patterns/pattern?username=" . urlencode(self::$username)
             . "&password=" . urlencode(self::$password)
@@ -79,8 +85,7 @@ class SMS
      */
     public static function get_user_phone($user_id)
     {
-        $phone_meta_key = get_option('swn_user_phone_meta', self::$default_meta_key); // default fallback
-        $raw = get_user_meta($user_id, $phone_meta_key, true);
+        $raw = get_user_meta($user_id, self::$user_phone_meta_key, true);
 
         if (!$raw) {
             return false;
