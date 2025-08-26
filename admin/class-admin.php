@@ -5,7 +5,7 @@ namespace SWN_Deluxe;
 defined('ABSPATH') || exit;
 
 require_once 'class-admin-wheels.php';
-require_once 'class-admin-settings.php';
+require_once 'class-plugin-settings.php';
 require_once 'class-wheels-list-table.php';
 require_once 'class-admin-wheel-items.php';
 
@@ -28,6 +28,7 @@ class Admin
 
         Admin_Wheels::init();
         Admin_Wheel_Items::init();
+        Plugin_Settings::init();
     }
 
 
@@ -39,7 +40,7 @@ class Admin
             __('Spin & Win', 'swn-deluxe'),
             'manage_options', // Capability
             self::MENU_SLUGS['PARENT_MENU'],   // Menu slug
-            [Admin_Settings::class, 'render_settings_page'], // this method does not exist yet
+            [Plugin_Settings::class, 'render_settings_page'], // this method does not exist yet
             'data:image/svg+xml;base64,' . base64_encode(
                 file_get_contents(SWN_DELUXE_PLUGIN_DIR . '/assets/image/menu-icon.svg')
             ), //'dashicons-awards', // Icon
@@ -53,7 +54,7 @@ class Admin
             __('Settings', 'swn-deluxe'),
             'manage_options',
             ADMIN::MENU_SLUGS['PARENT_MENU'], // Menu slug (same as parent to make it "default") 
-            [Admin_Settings::class, 'render_settings_page'],
+            [Plugin_Settings::class, 'render_settings_page'],
             2
         );
     }
