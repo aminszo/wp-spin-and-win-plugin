@@ -12,7 +12,8 @@ class DB
         'wheels'      => 'swn_wheels',
         'items'       => 'swn_wheel_items',
         'logs'        => 'swn_spin_logs',
-        'chances'     => 'swn_spin_chances'
+        'chances'     => 'swn_spin_chances',
+        'sms_logs'    => 'swn_sms_logs'
     ];
 
 
@@ -93,6 +94,21 @@ class DB
             KEY wheel_id (wheel_id),
             KEY user_id (user_id),
             KEY ip_address (ip_address)
+        ) $charset_collate;";
+
+        $sql[] = "CREATE TABLE " . $wpdb->prefix . self::$tables['sms_logs'] . " (
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+            user_id BIGINT UNSIGNED NULL,
+            phone_number VARCHAR(20) NOT NULL,
+            message TEXT NOT NULL,
+            pattern_code VARCHAR(40) NULL,
+            pattern_variables TEXT NULL,
+            status VARCHAR(50) NULL,
+            response TEXT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (id),
+            KEY user_id (user_id),
+            KEY phone_number (phone_number)
         ) $charset_collate;";
 
         // Execute all
