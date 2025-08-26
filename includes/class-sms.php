@@ -15,9 +15,11 @@ class SMS
 
     public static function init()
     {
+        $plugin_settings = get_option('swn_deluxe_settings', []);
+
         // Load credentials from plugin settings
-        self::$username = get_option('swn_sms_username', '');
-        self::$password = get_option('swn_sms_password', '');
+        self::$username = $plugin_settings['sms_api_username'];
+        self::$password = $plugin_settings['sms_api_password'];
     }
 
     /**

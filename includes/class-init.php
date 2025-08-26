@@ -39,6 +39,7 @@ class Init
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-spin-log.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-shortcode.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-coupon-code.php';
+        require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-sms.php';
 
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-ajax.php';
         require_once SWN_DELUXE_PLUGIN_DIR . 'includes/handle-spin/class-spin-handler.php';
