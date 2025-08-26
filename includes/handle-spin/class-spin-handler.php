@@ -55,6 +55,7 @@ class Spin_Handler
                 'message' => __('you won a prize', 'swn-deluxe'),
                 'prize' => $prize,
                 'prize_details' => $prize_awarded_details,
+                'remaining_spins' => Spin_Chance::remaining($wheel_id, $user_id, null)
             ]
         ];
     }

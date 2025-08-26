@@ -261,7 +261,7 @@ jQuery(document).ready(function ($) {
 
                         // Store prize data to show after animation
                         theWheel.userData = {
-                            prize_name: response.data.prize_name,
+                            prize_name: response.data.prize.display_name,
                             prize_details: response.data.prize_details,
                             message: response.data.message
                         };
@@ -353,7 +353,7 @@ jQuery(document).ready(function ($) {
 
     // Used if spin animation fails to start
     function alertPrizeDirectly(data) {
-        messageArea.html('<h3>' + data.prize_name + '</h3><p>' + data.prize_details + '</p>').addClass('swn-success');
+        messageArea.html('<h3>' + data.prize.display_name + '</h3><p>' + data.prize_details + '</p>').addClass('swn-success');
         currentSpinChances = parseInt(data.remaining_spins);
         updateSpinChancesDisplay();
         if (currentSpinChances <= 0) {
