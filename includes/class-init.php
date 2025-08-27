@@ -80,6 +80,10 @@ class Init
             Admin::init();
         }
 
+        // $res = Spin_Chance::remaining(1,18,null);
+        // var_dump($res);
+        // die();
+
         // DB::refresh_with_seed();
 
         // $users = get_users(['fields' => 'ID']);

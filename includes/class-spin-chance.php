@@ -27,6 +27,42 @@ class Spin_Chance
         return DB::get_table_name('chances');
     }
 
+
+    /**
+     * Check if a spin chance record exists for a wheel (user or guest IP).
+     *
+     * Uses SQL EXISTS for efficiency (stops at first match).
+     *
+     * @param int         $wheel_id
+     * @param int|null    $user_id
+     * @param string|null $ip
+     * @return bool
+     */
+    public static function exists(int $wheel_id, ?int $user_id = null, ?string $ip = null): bool
+    {
+        global $wpdb;
+        $table = self::table();
+
+        if ($user_id) {
+            $sql = $wpdb->prepare(
+                "SELECT EXISTS(SELECT 1 FROM {$table} WHERE wheel_id = %d AND user_id = %d)",
+                $wheel_id,
+                $user_id
+            );
+        } elseif ($ip) {
+            $sql = $wpdb->prepare(
+                "SELECT EXISTS(SELECT 1 FROM {$table} WHERE wheel_id = %d AND ip_address = %s)",
+                $wheel_id,
+                $ip
+            );
+        } else {
+            return false; // Neither user nor IP provided
+        }
+
+        return (bool) $wpdb->get_var($sql);
+    }
+
+
     /**
      * Get spin chances for a user (or guest by IP) on a specific wheel.
      *
@@ -67,13 +103,14 @@ class Spin_Chance
         global $wpdb;
         $table = self::table();
 
-        $existing = self::get($wheel_id, $user_id, $ip);
-
-        if ($existing) {
+        $exists = self::exists($wheel_id, $user_id, $ip);
+    
+        if ($exists) {
+            $current = self::get($wheel_id, $user_id, $ip);
             $wpdb->update(
                 $table,
                 ['spin_chance' => $chances],
-                ['id' => $existing->id],
+                ['id' => $current->id],
                 ['%d'],
                 ['%d']
             );
@@ -151,6 +188,11 @@ class Spin_Chance
      */
     public static function remaining(int $wheel_id, ?int $user_id, ?string $ip): int
     {
+        $exists = self::exists($wheel_id, $user_id, $ip);
+        if (!$exists) {
+            $initial_chances = Wheels::get_initial_chance_of_wheel($wheel_id);
+            self::set($wheel_id, $user_id, $ip, $initial_chances);
+        }
         $row = self::get($wheel_id, $user_id, $ip);
         return $row ? intval($row->spin_chance) : 0;
     }

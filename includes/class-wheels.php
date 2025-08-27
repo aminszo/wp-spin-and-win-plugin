@@ -112,4 +112,16 @@ class Wheels
         $table = DB::get_table_name('wheels');
         return $wpdb->delete($table, ['id' => $id]);
     }
+
+
+    public static function get_initial_chance_of_wheel($id){
+        $wheel = self::get($id);
+
+        if (!$wheel) {
+            return null;
+        }
+
+        $wheel_settings = json_decode($wheel->settings,true);
+        return intval($wheel_settings['new_user_chances']);
+    }
 }
