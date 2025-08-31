@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-14T21:59:41+00:00\n"
+"POT-Creation-Date: 2025-08-27T18:05:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: swn-deluxe\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: spin-and-win.php
-msgid "https://aminlog.ir/spin-and-win"
+msgid "https://aminlog.ir/wp-plugins/spin-and-win"
 msgstr ""
 
 #. Description of the plugin
@@ -39,260 +39,522 @@ msgstr ""
 msgid "https://aminlog.ir"
 msgstr ""
 
-#: includes/class-swn-admin.php:24
-#: includes/class-swn-admin.php:25
+#: admin/class-admin-wheel-items.php:39
+#: admin/class-admin-wheel-items.php:40
+msgid "Manage Wheel Items"
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:48
+#: admin/class-admin-wheel-items.php:49
+#: admin/views/wheel-item-edit-view.php:12
+msgid "Edit Item"
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:71
+#: admin/class-admin-wheel-items.php:100
+msgid "Invalid wheel ID."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:162
+msgid "The item has been added successfully."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:166
+msgid "Failed to add the item. Please try again."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:170
+msgid "The item has been updated successfully."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:174
+msgid "Failed to update the item. Please try again."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:178
+msgid "The item has been deleted successfully."
+msgstr ""
+
+#: admin/class-admin-wheel-items.php:182
+msgid "Failed to delete the item. Please try again."
+msgstr ""
+
+#: admin/class-admin-wheels.php:49
+#: admin/class-admin-wheels.php:50
+#: admin/class-wheels-list-table.php:25
+#: admin/views/wheels-list-view.php:10
+msgid "Wheels"
+msgstr ""
+
+#: admin/class-admin-wheels.php:60
+#: admin/class-admin-wheels.php:61
+#: admin/views/wheel-edit-view.php:29
+msgid "Edit Wheel"
+msgstr ""
+
+#: admin/class-admin-wheels.php:164
+msgid "The wheel has been created successfully."
+msgstr ""
+
+#: admin/class-admin-wheels.php:168
+msgid "Failed to create the wheel. Please try again."
+msgstr ""
+
+#: admin/class-admin-wheels.php:172
+msgid "The wheel has been updated successfully."
+msgstr ""
+
+#: admin/class-admin-wheels.php:176
+msgid "Failed to update the wheel. Please try again."
+msgstr ""
+
+#: admin/class-admin-wheels.php:180
+msgid "The wheel has been deleted successfully."
+msgstr ""
+
+#: admin/class-admin-wheels.php:184
+msgid "Failed to delete the wheel. Please try again."
+msgstr ""
+
+#: admin/class-admin.php:39
+#: admin/class-admin.php:40
 msgid "Spin & Win"
 msgstr ""
 
-#: includes/class-swn-admin.php:34
-#: includes/class-swn-admin.php:35
-msgid "Prize Settings"
+#: admin/class-admin.php:53
+#: admin/class-admin.php:54
+msgid "Settings"
 msgstr ""
 
-#: includes/class-swn-admin.php:42
-#: includes/class-swn-admin.php:43
-msgid "Spin Logs"
+#: admin/class-admin.php:82
+msgid "Copied!"
 msgstr ""
 
-#: includes/class-swn-admin.php:50
-#: includes/class-swn-admin.php:51
-msgid "Manual Spins"
+#: admin/class-admin.php:83
+#: admin/class-wheels-list-table.php:84
+msgid "Copy Shortcode"
 msgstr ""
 
-#: includes/class-swn-admin.php:58
-#: includes/class-swn-admin.php:59
-msgid "Usage Conditions"
+#: admin/class-plugin-settings.php:34
+msgid "Unauthorized."
 msgstr ""
 
-#: includes/class-swn-admin.php:91
-msgid "Total probability for all prizes should ideally sum up to 100."
+#: admin/class-plugin-settings.php:53
+msgid "Settings saved successfully"
 msgstr ""
 
-#: includes/class-swn-admin.php:103
-msgid "Spin & Win - Prize Settings"
+#: admin/class-wheels-list-table.php:24
+msgid "Wheel"
 msgstr ""
 
-#: includes/class-swn-admin.php:117
+#: admin/class-wheels-list-table.php:36
+msgid "ID"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:37
+#: admin/views/wheel-edit-view.php:40
+#: admin/views/wheel-item-edit-view.php:40
+#: admin/views/wheel-items-list-view.php:31
+msgid "Name"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:38
+#: admin/views/wheel-edit-view.php:50
+#: admin/views/wheel-item-edit-view.php:47
+#: admin/views/wheel-items-list-view.php:32
+msgid "Display Name"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:39
+#: admin/views/wheel-edit-view.php:60
+msgid "Slug"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:40
+#: admin/views/wheel-edit-view.php:70
+msgid "Status"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:41
+msgid "Created At"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:79
+msgid "Wheel Settings"
+msgstr ""
+
+#: admin/class-wheels-list-table.php:80
+msgid "Items"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:10
+msgid "SWN Deluxe Settings"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:17
+msgid "SMS Settings"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:18
+msgid "Other Settings"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:24
+msgid "API Username"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:28
+msgid "API Password"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:32
+msgid "Pattern Sender Number"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:36
+msgid "Text Sender Number"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:40
+msgid "User Phone Meta Key"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:49
+msgid "Remove Data on Uninstall"
+msgstr ""
+
+#: admin/views/plugin-settings-view.php:53
+msgid "Yes, remove all plugin data when uninstalling."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:29
+#: admin/views/wheels-list-view.php:12
+msgid "Add New Wheel"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:30
+msgid "Back to Wheels List"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:44
+msgid "Internal name of the wheel. This is used for identifying the wheel inside the system and is not shown to users."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:54
+msgid "The public-facing name of the wheel. This will be shown to users."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:64
+msgid "A unique identifier for the wheel. The slug is used in the shortcode (only lowercase, numbers and hyphens are allowed)."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:74
+msgid "Active"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:75
+msgid "Inactive"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:77
+msgid "Determines whether the wheel is active or inactive. Inactive wheels will not be available for users to spin."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:84
+msgid "Initial Spin Chances For New Users"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:92
+msgid "How many spin chances a new user receives for this wheel when they register."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:97
+msgid "Update Wheel"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:97
+msgid "Create Wheel"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:103
+#: admin/views/wheel-items-list-view.php:58
+msgid "Delete"
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:104
+msgid "Deleting this wheel is permanent and cannot be undone."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:105
+msgid "Are you sure you want to delete this wheel? This cannot be undone."
+msgstr ""
+
+#: admin/views/wheel-edit-view.php:108
+msgid "Delete Wheel"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:12
+#: admin/views/wheel-items-list-view.php:26
+msgid "Add New Item"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:13
+msgid "Back to Items List"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:20
 #, php-format
-msgid "Prize Segment %d"
+msgid "Editing Item \"%s\" on Wheel \"%s\""
 msgstr ""
 
-#: includes/class-swn-admin.php:119
-msgid "Prize Name:"
+#: admin/views/wheel-item-edit-view.php:26
+#, php-format
+msgid "Add New Item to Wheel \"%s\""
 msgstr ""
 
-#: includes/class-swn-admin.php:123
-msgid "Prize Text on Wheel:"
+#: admin/views/wheel-item-edit-view.php:43
+msgid "Internal identifier for the wheel item. Not shown to users, used only for management."
 msgstr ""
 
-#: includes/class-swn-admin.php:127
-msgid "Prize Type:"
+#: admin/views/wheel-item-edit-view.php:50
+msgid "The label displayed on the wheel segment when users spin."
 msgstr ""
 
-#: includes/class-swn-admin.php:129
-msgid "Discount Coupon"
+#: admin/views/wheel-item-edit-view.php:54
+#: admin/views/wheel-items-list-view.php:33
+msgid "Type"
 msgstr ""
 
-#: includes/class-swn-admin.php:130
+#: admin/views/wheel-item-edit-view.php:57
+msgid "Select a type"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:59
+msgid "Coupon"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:62
+msgid "Free Product"
+msgstr ""
+
+#: admin/views/wheel-item-edit-view.php:65
 msgid "Credit"
 msgstr ""
 
-#: includes/class-swn-admin.php:131
-msgid "Free Coffee Sample Box"
+#: admin/views/wheel-item-edit-view.php:68
+msgid "The prize type (e.g., coupon, credit, free product). Different types have different options."
 msgstr ""
 
-#: includes/class-swn-admin.php:135
-msgid "Prize Value:"
+#: admin/views/wheel-item-edit-view.php:72
+#: admin/views/wheel-items-list-view.php:34
+msgid "Probability"
 msgstr ""
 
-#: includes/class-swn-admin.php:137
-msgid "E.g., Coupon Code, Credit Amount, Product ID."
+#: admin/views/wheel-item-edit-view.php:75
+msgid "Relative weight for this prize. Higher numbers make the item more likely to be selected compared to others, but it is not a percentage."
 msgstr ""
 
-#: includes/class-swn-admin.php:140
-msgid "Probability (%):"
+#: admin/views/wheel-item-edit-view.php:79
+msgid "Segment Color"
 msgstr ""
 
-#: includes/class-swn-admin.php:144
-msgid "Segment Color:"
+#: admin/views/wheel-item-edit-view.php:82
+msgid "The color used to display this item’s segment on the wheel."
 msgstr ""
 
-#: includes/class-swn-admin.php:147
-msgid "Remove Prize Segment"
+#: admin/views/wheel-item-edit-view.php:86
+#: admin/views/wheel-items-list-view.php:36
+msgid "Sort Order"
 msgstr ""
 
-#: includes/class-swn-admin.php:151
-msgid "Add New Prize Segment"
+#: admin/views/wheel-item-edit-view.php:89
+msgid "Determines the order of appearance for segments. Lower numbers appear earlier in rendering."
 msgstr ""
 
-#: includes/class-swn-admin.php:170
-msgid "Spin & Win - Spin Logs"
+#: admin/views/wheel-item-edit-view.php:95
+msgid "Discount Percent"
 msgstr ""
 
-#: includes/class-swn-admin.php:174
-msgid "Log ID"
+#: admin/views/wheel-item-edit-view.php:98
+msgid "The discount percentage to apply when this item is selected as a prize."
 msgstr ""
 
-#: includes/class-swn-admin.php:175
-msgid "User"
+#: admin/views/wheel-item-edit-view.php:103
+msgid "Credit Amount"
 msgstr ""
 
-#: includes/class-swn-admin.php:176
-msgid "Prize Won"
+#: admin/views/wheel-item-edit-view.php:106
+msgid "The amount of credit awarded to the user when this item is selected."
 msgstr ""
 
-#: includes/class-swn-admin.php:177
-msgid "Details"
+#: admin/views/wheel-item-edit-view.php:111
+msgid "Product Count"
 msgstr ""
 
-#: includes/class-swn-admin.php:178
-msgid "Timestamp"
+#: admin/views/wheel-item-edit-view.php:114
+msgid "Number of free products awarded when this prize is won."
 msgstr ""
 
-#: includes/class-swn-admin.php:189
-msgid "Unknown User"
+#: admin/views/wheel-item-edit-view.php:119
+msgid "Product Category Slug"
 msgstr ""
 
-#: includes/class-swn-admin.php:197
-msgid "No spin logs found."
+#: admin/views/wheel-item-edit-view.php:122
+msgid "The Slug of WooCommerce product category from which the free product will be selected."
 msgstr ""
 
-#: includes/class-swn-admin.php:223
-msgid "Spin & Win - Manually Give Spins"
+#: admin/views/wheel-item-edit-view.php:128
+msgid "Update Item"
 msgstr ""
 
-#: includes/class-swn-admin.php:227
-msgid "User (ID, Email, or Username)"
+#: admin/views/wheel-item-edit-view.php:128
+msgid "Add Item"
 msgstr ""
 
-#: includes/class-swn-admin.php:231
-msgid "Number of Spins to Add/Set"
-msgstr ""
-
-#: includes/class-swn-admin.php:235
-msgid "Action"
-msgstr ""
-
-#: includes/class-swn-admin.php:238
-msgid "Add to Current Spins"
-msgstr ""
-
-#: includes/class-swn-admin.php:239
-msgid "Set Total Spins"
-msgstr ""
-
-#: includes/class-swn-admin.php:245
-msgid "Update User Spins"
-msgstr ""
-
-#: includes/class-swn-admin.php:247
-msgid "Current User Spins:"
-msgstr ""
-
-#: includes/class-swn-admin.php:256
-msgid "Spin & Win - Usage Conditions"
-msgstr ""
-
-#: includes/class-swn-admin.php:264
-msgid "Purchase Amount for Extra Spin ($)"
-msgstr ""
-
-#: includes/class-swn-admin.php:267
-msgid "A user gets an additional spin chance if their completed order total is equal to or greater than this amount. Requires WooCommerce."
-msgstr ""
-
-#: includes/class-swn-admin.php:282
-msgid "Insufficient permissions."
-msgstr ""
-
-#: includes/class-swn-admin.php:290
-msgid "User identifier cannot be empty."
-msgstr ""
-
-#: includes/class-swn-admin.php:305
+#: admin/views/wheel-items-list-view.php:17
 #, php-format
-msgid "User \"%s\" not found."
+msgid "Manage Items for Wheel: %s"
 msgstr ""
 
-#: includes/class-swn-admin.php:313
-msgid "Invalid action."
+#: admin/views/wheel-items-list-view.php:18
+msgid "Back to Wheels"
 msgstr ""
 
-#: includes/class-swn-admin.php:318
-#, php-format
-msgid "Successfully updated spins for user %s. New total: %d"
+#: admin/views/wheel-items-list-view.php:25
+msgid "Existing Items"
 msgstr ""
 
-#: includes/class-swn-ajax.php:25
-msgid "You must be logged in to spin."
+#: admin/views/wheel-items-list-view.php:35
+msgid "Color"
 msgstr ""
 
-#: includes/class-swn-ajax.php:32
-#: spin-and-win.php:115
-msgid "You have no spins left."
+#: admin/views/wheel-items-list-view.php:37
+msgid "Actions"
 msgstr ""
 
-#: includes/class-swn-ajax.php:129
-#, php-format
-msgid "Coupon Code: %s <br> Use this to order free sample boxes."
+#: admin/views/wheel-items-list-view.php:53
+msgid "Edit"
 msgstr ""
 
-#: includes/class-swn-ajax.php:156
-#: includes/class-swn-ajax.php:247
-msgid "Coupon prize (WooCommerce not active)."
+#: admin/views/wheel-items-list-view.php:55
+msgid "Are you sure you want to delete this item? This cannot be undone."
 msgstr ""
 
-#: includes/class-swn-ajax.php:173
-#, php-format
-msgid "%d credits added to your account."
+#: admin/views/wheel-items-list-view.php:65
+msgid "No items found."
 msgstr ""
 
-#: includes/class-swn-ajax.php:197
-#, php-format
-msgid "%d credits (manual processing needed)."
+#: includes/class-shortcode.php:69
+msgid "Wheel not found."
 msgstr ""
 
-#: includes/class-swn-ajax.php:221
-#, php-format
-msgid "Coupon Code: %s"
-msgstr ""
-
-#: includes/class-swn-ajax.php:254
-msgid "Better luck next time!"
-msgstr ""
-
-#: spin-and-win.php:113
-#: templates/frontend/wheel-display.php:19
+#: includes/class-shortcode.php:108
+#: templates/frontend/wheel-display.php:16
 msgid "Please log in to spin the wheel!"
 msgstr ""
 
-#: spin-and-win.php:114
+#: includes/class-shortcode.php:109
 #: templates/frontend/wheel-display.php:25
 #, php-format
 msgid "Remaining spin chances: %d"
 msgstr ""
 
-#: spin-and-win.php:116
+#: includes/class-shortcode.php:110
+#: old/class-swn-ajax.php:44
+msgid "You have no spins left."
+msgstr ""
+
+#: includes/class-shortcode.php:111
 #, php-format
 msgid "You won %s"
 msgstr ""
 
-#: spin-and-win.php:117
+#: includes/class-shortcode.php:112
 msgid "..."
 msgstr ""
 
-#: templates/frontend/wheel-display.php:11
+#: includes/class-shortcode.php:125
+msgid "Wheel template not found."
+msgstr ""
+
+#: includes/handle-spin/class-ajax.php:50
+msgid "Invalid security token."
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:29
+#: old/class-swn-ajax.php:251
+msgid "Better luck next time!"
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:58
+#: old/class-swn-ajax.php:140
+#, php-format
+msgid "Coupon Code: %s <br> Use this to order free sample boxes."
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:70
+#: includes/handle-spin/class-prize-fulfillment.php:137
+#: old/class-swn-ajax.php:162
+#: old/class-swn-ajax.php:244
+msgid "Coupon prize (WooCommerce not active)."
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:87
+#: old/class-swn-ajax.php:179
+#, php-format
+msgid "%d credits added to your account."
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:98
+#: old/class-swn-ajax.php:199
+#, php-format
+msgid "%d credits (manual processing needed)."
+msgstr ""
+
+#: includes/handle-spin/class-prize-fulfillment.php:126
+#: old/class-swn-ajax.php:223
+#, php-format
+msgid "Coupon Code: %s"
+msgstr ""
+
+#: includes/handle-spin/class-spin-handler.php:30
+#: includes/handle-spin/class-spin-handler.php:34
+msgid "No prizes available."
+msgstr ""
+
+#: includes/handle-spin/class-spin-handler.php:57
+msgid "you won a prize"
+msgstr ""
+
+#: includes/handle-spin/class-spin-validator.php:20
+msgid "Missing or invalid wheel ID."
+msgstr ""
+
+#: includes/handle-spin/class-spin-validator.php:29
+msgid "The requested wheel does not exist."
+msgstr ""
+
+#: includes/handle-spin/class-spin-validator.php:37
+#: old/class-swn-ajax.php:37
+msgid "You must be logged in to spin."
+msgstr ""
+
+#: includes/handle-spin/class-spin-validator.php:46
+msgid "You have no spins remaining for this wheel."
+msgstr ""
+
+#: templates/frontend/wheel-display.php:8
 msgid "Sorry, your browser doesn't support canvas. Please try another."
 msgstr ""
 
-#: templates/frontend/wheel-display.php:13
+#: templates/frontend/wheel-display.php:10
 msgid "Spin the Wheel"
 msgstr ""
 
-#: templates/frontend/wheel-display.php:13
+#: templates/frontend/wheel-display.php:10
 msgid "Spin"
 msgstr ""
 
-#: templates/frontend/wheel-display.php:20
+#: templates/frontend/wheel-display.php:19
 msgid "Login or Signup"
 msgstr ""
