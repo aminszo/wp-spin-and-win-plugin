@@ -13,10 +13,10 @@ defined('ABSPATH') || exit;
         <?php wp_nonce_field('swn_deluxe_save_settings'); ?>
         <input type="hidden" name="action" value="swn_deluxe_save_settings">
 
-        <h2 class="nav-tab-wrapper">
+        <div class="nav-tab-wrapper">
             <a href="#tab-sms" class="nav-tab nav-tab-active"><?php _e('SMS Settings', 'swn-deluxe'); ?></a>
             <a href="#tab-other" class="nav-tab"><?php _e('Other Settings', 'swn-deluxe'); ?></a>
-        </h2>
+        </div>
 
         <div id="tab-sms" class="swn-tab-content" style="display:block;">
             <table class="form-table">
