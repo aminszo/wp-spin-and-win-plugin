@@ -3,12 +3,13 @@
 /**
  * Plugin Name:       Spin and Win Deluxe
  * Plugin URI:        https://aminlog.ir/wp-plugins/spin-and-win
- * Description:       Engage users with a spin and win game for prizes.
+ * Description:       Adds customizable spin-the-wheel games. Engage users with interactive prize wheels.
  * Version:           1.0.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Amin Salehizade
  * Author URI:        https://aminlog.ir
+ * Tags:              Spin-to-Win Wheel, spin the wheel, spin wheel, fortune wheel, Prize Wheel, Lucky Wheel
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       swn-deluxe

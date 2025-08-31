@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Spin and Win Deluxe 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/swn\n"
-"POT-Creation-Date: 2025-08-27T18:05:52+00:00\n"
-"PO-Revision-Date: 2025-08-27 21:52+0330\n"
+"POT-Creation-Date: 2025-08-31T13:00:08+00:00\n"
+"PO-Revision-Date: 2025-08-31 16:57+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -28,8 +28,12 @@ msgstr ""
 
 #. Description of the plugin
 #: spin-and-win.php
-msgid "Engage users with a spin and win game for prizes."
+msgid ""
+"Adds customizable spin-the-wheel games. Engage users with interactive prize "
+"wheels."
 msgstr ""
+"با این افزونه میتوانید گردونه های شانس قابل شخصی سازی بسازید و تعامل و "
+"مشارکت کاربران تان را افزایش دهید."
 
 #. Author of the plugin
 #: spin-and-win.php
@@ -43,307 +47,303 @@ msgstr ""
 
 #: admin/class-admin-wheel-items.php:39 admin/class-admin-wheel-items.php:40
 msgid "Manage Wheel Items"
-msgstr ""
+msgstr "مدیریت آیتم های گردونه"
 
 #: admin/class-admin-wheel-items.php:48 admin/class-admin-wheel-items.php:49
 #: admin/views/wheel-item-edit-view.php:12
 msgid "Edit Item"
-msgstr ""
+msgstr "ویرایش آیتم"
 
 #: admin/class-admin-wheel-items.php:71 admin/class-admin-wheel-items.php:100
 msgid "Invalid wheel ID."
-msgstr ""
+msgstr "شناسه گردونه نامعتبر است."
 
 #: admin/class-admin-wheel-items.php:162
 msgid "The item has been added successfully."
-msgstr ""
+msgstr "آیتم با موفقیت افزوده شد."
 
 #: admin/class-admin-wheel-items.php:166
 msgid "Failed to add the item. Please try again."
-msgstr ""
+msgstr "افزودن آیتم ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin-wheel-items.php:170
 msgid "The item has been updated successfully."
-msgstr ""
+msgstr "آیتم با موفقیت بروز شد."
 
 #: admin/class-admin-wheel-items.php:174
 msgid "Failed to update the item. Please try again."
-msgstr ""
+msgstr "بروزرسانی آیتم ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin-wheel-items.php:178
 msgid "The item has been deleted successfully."
-msgstr ""
+msgstr "آیتم با موفقیت حذف شد."
 
 #: admin/class-admin-wheel-items.php:182
 msgid "Failed to delete the item. Please try again."
-msgstr ""
+msgstr "حذف آیتم ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin-wheels.php:49 admin/class-admin-wheels.php:50
 #: admin/class-wheels-list-table.php:25 admin/views/wheels-list-view.php:10
 msgid "Wheels"
-msgstr ""
+msgstr "گردونه ها"
 
 #: admin/class-admin-wheels.php:60 admin/class-admin-wheels.php:61
 #: admin/views/wheel-edit-view.php:29
 msgid "Edit Wheel"
-msgstr ""
+msgstr "ویرایش گردونه"
 
 #: admin/class-admin-wheels.php:164
 msgid "The wheel has been created successfully."
-msgstr ""
+msgstr "گردونه با موفقیت ایجاد شد."
 
 #: admin/class-admin-wheels.php:168
 msgid "Failed to create the wheel. Please try again."
-msgstr ""
+msgstr "ایجاد گردونه ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin-wheels.php:172
 msgid "The wheel has been updated successfully."
-msgstr ""
+msgstr "گردونه با موفقیت بروز شد."
 
 #: admin/class-admin-wheels.php:176
 msgid "Failed to update the wheel. Please try again."
-msgstr ""
+msgstr "بروزرسانی گردونه ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin-wheels.php:180
 msgid "The wheel has been deleted successfully."
-msgstr ""
+msgstr "گردونه با موفقیت حذف شد."
 
 #: admin/class-admin-wheels.php:184
 msgid "Failed to delete the wheel. Please try again."
-msgstr ""
+msgstr "حذف گردونه ناموفق بود. لطفا دوباره امتحان کنید."
 
 #: admin/class-admin.php:39 admin/class-admin.php:40
 msgid "Spin & Win"
 msgstr "گردونه شانس"
 
 #: admin/class-admin.php:53 admin/class-admin.php:54
-#, fuzzy
-#| msgid "Prize Settings"
 msgid "Settings"
-msgstr "آیتم های گردونه"
+msgstr "تنظیمات"
 
 #: admin/class-admin.php:82
 msgid "Copied!"
-msgstr ""
+msgstr "کپی شد!"
 
 #: admin/class-admin.php:83 admin/class-wheels-list-table.php:84
 msgid "Copy Shortcode"
-msgstr ""
+msgstr "کپی کردن شورت کد"
 
 #: admin/class-plugin-settings.php:34
 msgid "Unauthorized."
-msgstr ""
+msgstr "دسترسی غیرمجاز."
 
 #: admin/class-plugin-settings.php:53
 msgid "Settings saved successfully"
-msgstr ""
+msgstr "تنظیمات با موفقیت ذخیره شد"
 
 #: admin/class-wheels-list-table.php:24
 msgid "Wheel"
-msgstr ""
+msgstr "گردونه"
 
 #: admin/class-wheels-list-table.php:36
 msgid "ID"
-msgstr ""
+msgstr "آیدی"
 
 #: admin/class-wheels-list-table.php:37 admin/views/wheel-edit-view.php:40
 #: admin/views/wheel-item-edit-view.php:40
 #: admin/views/wheel-items-list-view.php:31
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #: admin/class-wheels-list-table.php:38 admin/views/wheel-edit-view.php:50
 #: admin/views/wheel-item-edit-view.php:47
 #: admin/views/wheel-items-list-view.php:32
 msgid "Display Name"
-msgstr ""
+msgstr "نام نمایشی"
 
 #: admin/class-wheels-list-table.php:39 admin/views/wheel-edit-view.php:60
 msgid "Slug"
-msgstr ""
+msgstr "نامک"
 
 #: admin/class-wheels-list-table.php:40 admin/views/wheel-edit-view.php:70
 msgid "Status"
-msgstr ""
+msgstr "وضعیت"
 
 #: admin/class-wheels-list-table.php:41
 msgid "Created At"
-msgstr ""
+msgstr "تاریخ ایجاد"
 
 #: admin/class-wheels-list-table.php:79
-#, fuzzy
-#| msgid "Prize Settings"
 msgid "Wheel Settings"
-msgstr "آیتم های گردونه"
+msgstr "تنظیمات گردونه"
 
 #: admin/class-wheels-list-table.php:80
 msgid "Items"
-msgstr ""
+msgstr "آیتم ها"
 
 #: admin/views/plugin-settings-view.php:10
-#, fuzzy
-#| msgid "Prize Settings"
 msgid "SWN Deluxe Settings"
-msgstr "آیتم های گردونه"
+msgstr "تنظیمات افزونه گردونه شانس"
 
 #: admin/views/plugin-settings-view.php:17
-#, fuzzy
-#| msgid "Prize Settings"
 msgid "SMS Settings"
-msgstr "آیتم های گردونه"
+msgstr "پیامک"
 
 #: admin/views/plugin-settings-view.php:18
-#, fuzzy
-#| msgid "Prize Settings"
 msgid "Other Settings"
-msgstr "آیتم های گردونه"
+msgstr "سایر"
 
 #: admin/views/plugin-settings-view.php:24
 msgid "API Username"
-msgstr ""
+msgstr "نام کاربری سامانه پیامکی"
 
 #: admin/views/plugin-settings-view.php:28
 msgid "API Password"
-msgstr ""
+msgstr "رمز عبور سامانه پیامکی"
 
 #: admin/views/plugin-settings-view.php:32
 msgid "Pattern Sender Number"
-msgstr ""
+msgstr "شماره فرستنده پیامک پترن"
 
 #: admin/views/plugin-settings-view.php:36
 msgid "Text Sender Number"
-msgstr ""
+msgstr "شماره فرستنده پیامک متنی معمولی"
 
 #: admin/views/plugin-settings-view.php:40
 msgid "User Phone Meta Key"
-msgstr ""
+msgstr "کلید متا شماره موبایل کاربر"
 
 #: admin/views/plugin-settings-view.php:49
 msgid "Remove Data on Uninstall"
-msgstr ""
+msgstr "پاکسازی داده ها پس از حذف افزونه"
 
 #: admin/views/plugin-settings-view.php:53
 msgid "Yes, remove all plugin data when uninstalling."
-msgstr ""
+msgstr "بله، همه داده های این افزونه، زمان حذف افزونه پاکسازی شود."
 
 #: admin/views/wheel-edit-view.php:29 admin/views/wheels-list-view.php:12
 msgid "Add New Wheel"
-msgstr ""
+msgstr "افزودن گردونه جدید"
 
 #: admin/views/wheel-edit-view.php:30
 msgid "Back to Wheels List"
-msgstr ""
+msgstr "بازگشت به لیست گردونه‌ها"
 
 #: admin/views/wheel-edit-view.php:44
 msgid ""
 "Internal name of the wheel. This is used for identifying the wheel inside "
 "the system and is not shown to users."
 msgstr ""
+"نام داخلی این گردونه که برای شناسایی آن در سیستم استفاده می‌شود و به کاربران "
+"نمایش داده نمی‌شود."
 
 #: admin/views/wheel-edit-view.php:54
 msgid "The public-facing name of the wheel. This will be shown to users."
-msgstr ""
+msgstr "نام نمایشی عمومی گردونه. این نام برای نمایش به کاربران استفاده می‌شود."
 
 #: admin/views/wheel-edit-view.php:64
 msgid ""
 "A unique identifier for the wheel. The slug is used in the shortcode (only "
 "lowercase, numbers and hyphens are allowed)."
 msgstr ""
+"یک شناسه یکتا برای گردونه که در شورت‌کد استفاده می‌شود. فقط حروف کوچک، عدد و "
+"خط تیره مجاز است."
 
 #: admin/views/wheel-edit-view.php:74
 msgid "Active"
-msgstr ""
+msgstr "فعال"
 
 #: admin/views/wheel-edit-view.php:75
 msgid "Inactive"
-msgstr ""
+msgstr "غیرفعال"
 
 #: admin/views/wheel-edit-view.php:77
 msgid ""
 "Determines whether the wheel is active or inactive. Inactive wheels will not "
 "be available for users to spin."
 msgstr ""
+"مشخص می‌کند که گردونه فعال است یا غیرفعال. گردونه‌های غیرفعال برای کاربران "
+"قابل چرخاندن نخواهند بود."
 
 #: admin/views/wheel-edit-view.php:84
 msgid "Initial Spin Chances For New Users"
-msgstr ""
+msgstr "تعداد شانس اولیه"
 
 #: admin/views/wheel-edit-view.php:92
 msgid ""
 "How many spin chances a new user receives for this wheel when they register."
-msgstr ""
+msgstr "تعداد شانس های اولیه ای که یک کاربر برای این گردونه دریافت میکند."
 
 #: admin/views/wheel-edit-view.php:97
 msgid "Update Wheel"
-msgstr ""
+msgstr "بروزرسانی گردونه"
 
 #: admin/views/wheel-edit-view.php:97
 msgid "Create Wheel"
-msgstr ""
+msgstr "ایجاد گردونه"
 
 #: admin/views/wheel-edit-view.php:103 admin/views/wheel-items-list-view.php:58
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: admin/views/wheel-edit-view.php:104
 msgid "Deleting this wheel is permanent and cannot be undone."
-msgstr ""
+msgstr "حذف این گردونه دائمی است و قابل بازگردانی نخواهد بود."
 
 #: admin/views/wheel-edit-view.php:105
 msgid "Are you sure you want to delete this wheel? This cannot be undone."
-msgstr ""
+msgstr "آیا از حذف این گردونه مطمئن هستید؟ این عمل قابل بازگشت نخواهد بود."
 
 #: admin/views/wheel-edit-view.php:108
 msgid "Delete Wheel"
-msgstr ""
+msgstr "حذف گردونه"
 
 #: admin/views/wheel-item-edit-view.php:12
 #: admin/views/wheel-items-list-view.php:26
-#, fuzzy
-#| msgid "Add New Prize Segment"
 msgid "Add New Item"
 msgstr "اضافه کردن آیتم جدید"
 
 #: admin/views/wheel-item-edit-view.php:13
 msgid "Back to Items List"
-msgstr ""
+msgstr "بازگشت به لیست آیتم‌ها"
 
 #: admin/views/wheel-item-edit-view.php:20
 #, php-format
 msgid "Editing Item \"%s\" on Wheel \"%s\""
-msgstr ""
+msgstr "ویرایش آیتم \"%s\" در گردونه \"%s\""
 
 #: admin/views/wheel-item-edit-view.php:26
 #, php-format
 msgid "Add New Item to Wheel \"%s\""
-msgstr ""
+msgstr "افزودن آیتم جدید به گردونه \"%s\""
 
 #: admin/views/wheel-item-edit-view.php:43
 msgid ""
 "Internal identifier for the wheel item. Not shown to users, used only for "
 "management."
 msgstr ""
+"یک شناسه داخلی برای این آیتم گردونه. به کاربران نمایش داده نمیشود و فقط برای "
+"مدیریت استفاده میشود."
 
 #: admin/views/wheel-item-edit-view.php:50
 msgid "The label displayed on the wheel segment when users spin."
-msgstr ""
+msgstr "لیبلی که روی گردونه نمایش داده میشود."
 
 #: admin/views/wheel-item-edit-view.php:54
 #: admin/views/wheel-items-list-view.php:33
 msgid "Type"
-msgstr ""
+msgstr "نوع"
 
 #: admin/views/wheel-item-edit-view.php:57
 msgid "Select a type"
-msgstr ""
+msgstr "یک نوع را انتخاب کنید"
 
 #: admin/views/wheel-item-edit-view.php:59
 msgid "Coupon"
-msgstr ""
+msgstr "کد تخفیف"
 
 #: admin/views/wheel-item-edit-view.php:62
 msgid "Free Product"
-msgstr ""
+msgstr "محصول رایگان"
 
 #: admin/views/wheel-item-edit-view.php:65
 msgid "Credit"
@@ -354,6 +354,8 @@ msgid ""
 "The prize type (e.g., coupon, credit, free product). Different types have "
 "different options."
 msgstr ""
+"نوع جایزه (مثلاً کد تخفیف، اعتبار، محصول رایگان). انواع مختلف، تنظیمات "
+"متفاوتی دارند."
 
 #: admin/views/wheel-item-edit-view.php:72
 #: admin/views/wheel-items-list-view.php:34
@@ -471,7 +473,7 @@ msgstr "گردونه پیدا نشد."
 
 #: includes/class-shortcode.php:108 templates/frontend/wheel-display.php:16
 msgid "Please log in to spin the wheel!"
-msgstr "برای چرخاندن گردونه ابتدا وارد حساب کاربری شوید."
+msgstr "برای چرخاندن گردونه ابتدا وارد حساب کاربری شوید!"
 
 #: includes/class-shortcode.php:109 templates/frontend/wheel-display.php:25
 #, php-format
@@ -485,7 +487,7 @@ msgstr "شانس دیگری برای چرخاندن گردونه ندارید."
 #: includes/class-shortcode.php:111
 #, php-format
 msgid "You won %s"
-msgstr "شما برنده %s شدید."
+msgstr "شما برنده %s شدید"
 
 #: includes/class-shortcode.php:112
 msgid "..."
@@ -543,7 +545,7 @@ msgstr "هیچ جایزه ای وجود ندارد."
 
 #: includes/handle-spin/class-spin-handler.php:57
 msgid "you won a prize"
-msgstr "شما برنده یک جایزه شدید."
+msgstr "شما برنده یک جایزه شدید"
 
 #: includes/handle-spin/class-spin-validator.php:20
 msgid "Missing or invalid wheel ID."
