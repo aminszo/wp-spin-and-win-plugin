@@ -64,6 +64,9 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                         <option value="credit" <?php selected($editing_item ? $editing_item->type : '', 'credit'); ?>>
                             <?php esc_html_e('Credit', 'swn-deluxe'); ?>
                         </option>
+                        <option value="nothing" <?php selected($editing_item ? $editing_item->type : '', 'nothing'); ?>>
+                            <?php esc_html_e('nothing', 'swn-deluxe'); ?>
+                        </option>
                     </select>
                     <p class="description"><?php _e('The prize type (e.g., coupon, credit, free product). Different types have different options.', 'swn-deluxe'); ?></p>
                 </td>
@@ -96,6 +99,14 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 <td>
                     <input type="number" min='0' max='100' name="percent" id="percent" value="<?php echo esc_attr($options['percent'] ?? ''); ?>" />
                     <p class="description"><?php _e('The discount percentage to apply when this item is selected as a prize.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+
+            <tr class="field-coupon type-field">
+                <th scope="row"><label for="maximum_amount"><?php _e('Maximum Amount', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="number" min='0' name="maximum_amount" id="maximum_amount" value="<?php echo esc_attr($options['maximum_amount'] ?? ''); ?>" />
+                    <p class="description"><?php _e('The maximum amount allowed in cart with this coupon code to apply. 0 means unlimited', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 

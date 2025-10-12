@@ -108,11 +108,13 @@ class Prize_Fulfillment
 
         if (class_exists('WooCommerce')) {
             $coupon_code_percent = $options['percent'];
+            $coupon_code_maximum_amount = $options['maximum_amount'];
             $coupon_code = Coupon_Code::generate_coupon(
                 $coupon_code_percent,
                 'percent',
                 "Congratulations! You won $coupon_code_percent off!",
-                0 // never expires
+                0, // never expires
+                $coupon_code_maximum_amount
             );
 
             if ($coupon_code) {

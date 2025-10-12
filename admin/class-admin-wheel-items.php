@@ -112,6 +112,8 @@ class Admin_Wheel_Items
             switch ($type) {
                 case 'coupon':
                     $options['percent'] = intval($_POST['percent'] ?? 0);
+                    $options['maximum_amount'] = intval($_POST['maximum_amount'] ?? 0);
+
                     break;
 
                 case 'credit':

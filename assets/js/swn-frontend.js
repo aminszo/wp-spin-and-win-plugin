@@ -70,7 +70,7 @@ jQuery(document).ready(function ($) {
             'innerRadius': swn_params.inner_radius || 0, // Make it a pie or donut (0 = pie, >0 = donut)
             'lineWidth': swn_params.wheel_line_width || 2,
             'strokeStyle': swn_params.wheel_stroke_color || '#FFFFFF',
-            'textFontSize': swn_params.text_size || 16,
+            'textFontSize': swn_params.text_size || 14,
             'textFillStyle': swn_params.wheel_text_color || '#ffffff',
             'textAlignment': 'center',
             // 'textMargin'  : 55,
@@ -85,10 +85,10 @@ jQuery(document).ready(function ($) {
                 'callbackSound': playSound, // Tick sound while spinning
             },
             'pins': { // (Optional) Decorative pins around wheel
-                'number': swn_params.numSegments * 2, // 2 pins per segment
+                'number': swn_params.numSegments , // 1 pins per segment
                 'fillStyle': 'white',
                 'strokeStyle': '#FFFFFF',
-                'outerRadius': 3,
+                'outerRadius': 2,
                 'responsive': true // This must be true if responsive is true
             }
         });
