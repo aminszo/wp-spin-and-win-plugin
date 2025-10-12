@@ -110,6 +110,14 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 </td>
             </tr>
 
+            <tr class="field-coupon type-field">
+                <th scope="row"><label for="expiry_days"><?php _e('expiry days', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="number" min='0' name="expiry_days" id="expiry_days" value="<?php echo esc_attr($options['expiry_days'] ?? ''); ?>" />
+                    <p class="description"><?php _e('The number of days the discount code will expire. A value of 0 means no expiration date.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+
             <tr class="field-credit type-field">
                 <th scope="row"><label for="credit_amount"><?php _e('Credit Amount', 'swn-deluxe'); ?></label></th>
                 <td>

@@ -113,6 +113,7 @@ class Admin_Wheel_Items
                 case 'coupon':
                     $options['percent'] = intval($_POST['percent'] ?? 0);
                     $options['maximum_amount'] = intval($_POST['maximum_amount'] ?? 0);
+                    $options['expiry_days'] = intval($_POST['expiry_days'] ?? 0);
 
                     break;
 
