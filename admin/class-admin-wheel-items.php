@@ -122,7 +122,7 @@ class Admin_Wheel_Items
 
                 case 'free-product':
                     $options['count'] = intval($_POST['count'] ?? 1);
-                    $options['product_category'] = intval($_POST['product_category'] ?? 0);
+                    $options['product_category'] = sanitize_text_field($_POST['product_category']);
                     break;
             }
 
