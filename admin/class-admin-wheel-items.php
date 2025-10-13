@@ -114,7 +114,9 @@ class Admin_Wheel_Items
                     $options['percent'] = intval($_POST['percent'] ?? 0);
                     $options['maximum_amount'] = intval($_POST['maximum_amount'] ?? 0);
                     $options['expiry_days'] = intval($_POST['expiry_days'] ?? 0);
-
+                    $options['count'] = intval($_POST['count'] ?? 1);
+                    $options['product_category'] = sanitize_text_field($_POST['product_category']);
+                    $options['first_order'] =  sanitize_text_field($_POST['first_order']) === "true";
                     break;
 
                 case 'credit':

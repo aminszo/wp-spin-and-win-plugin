@@ -110,12 +110,17 @@ class Prize_Fulfillment
             $coupon_code_percent = $options['percent'];
             $coupon_code_maximum_amount = $options['maximum_amount'];
             $coupon_code_expiry_days = $options['expiry_days'];
+            $product_category = $options['product_category'];
+            $coupon_code_x_items = sanitize_text_field($options['count']);
+
             $coupon_code = Coupon_Code::generate_coupon(
                 $coupon_code_percent,
                 'percent',
                 "Congratulations! You won $coupon_code_percent off!",
                 $coupon_code_expiry_days,
-                $coupon_code_maximum_amount
+                $coupon_code_maximum_amount,
+                $product_category,
+                $coupon_code_x_items
             );
 
             if ($coupon_code) {

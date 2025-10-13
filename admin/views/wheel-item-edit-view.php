@@ -6,6 +6,7 @@ defined('ABSPATH') || exit;
 
 $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id'])) : null;
 $options = $editing_item ? json_decode($editing_item->options, true) : [];
+var_dump($options);
 ?>
 <div class="wrap">
     <h1 class="wp-heading-inline">
@@ -57,9 +58,6 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                         <option value=""><?php esc_html_e('Select a type', 'swn-deluxe'); ?></option>
                         <option value="coupon" <?php selected($editing_item ? $editing_item->type : '', 'coupon'); ?>>
                             <?php esc_html_e('Coupon', 'swn-deluxe'); ?>
-                        </option>
-                        <option value="free-product" <?php selected($editing_item ? $editing_item->type : '', 'free-product'); ?>>
-                            <?php esc_html_e('Free Product', 'swn-deluxe'); ?>
                         </option>
                         <option value="credit" <?php selected($editing_item ? $editing_item->type : '', 'credit'); ?>>
                             <?php esc_html_e('Credit', 'swn-deluxe'); ?>
@@ -118,15 +116,15 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 </td>
             </tr>
 
-            <tr class="field-credit type-field">
-                <th scope="row"><label for="credit_amount"><?php _e('Credit Amount', 'swn-deluxe'); ?></label></th>
+            <tr class="field-coupon type-field">
+                <th scope="row"><label for="first_order"><?php _e('first_order', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="number" name="credit_amount" id="credit_amount" value="<?php echo esc_attr($options['credit_amount'] ?? ''); ?>" />
-                    <p class="description"><?php _e('The amount of credit awarded to the user when this item is selected.', 'swn-deluxe'); ?></p>
+                    <input type="checkbox" name="first_order" id="first_order" value="true" <?php checked(true, $options['first_order']) ?> />
+                    <p class="description"><?php _e('Is this only limited to the user\'s first order?', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 
-            <tr class="field-free-product type-field">
+            <tr class="field-free-product field-coupon type-field">
                 <th scope="row"><label for="count"><?php _e('Product Count', 'swn-deluxe'); ?></label></th>
                 <td>
                     <input type="number" name="count" id="count" value="<?php echo esc_attr($options['count'] ?? ''); ?>" />
@@ -134,11 +132,19 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 </td>
             </tr>
 
-            <tr class="field-free-product type-field">
+            <tr class="field-free-product field-coupon type-field">
                 <th scope="row"><label for="product_category"><?php _e('Product Category Slug', 'swn-deluxe'); ?></label></th>
                 <td>
                     <input type="text" name="product_category" id="product_category" value="<?php echo esc_attr($options['product_category'] ?? ''); ?>" />
                     <p class="description"><?php _e('The Slug of WooCommerce product category from which the free product will be selected.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+
+            <tr class="field-credit type-field">
+                <th scope="row"><label for="credit_amount"><?php _e('Credit Amount', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="number" name="credit_amount" id="credit_amount" value="<?php echo esc_attr($options['credit_amount'] ?? ''); ?>" />
+                    <p class="description"><?php _e('The amount of credit awarded to the user when this item is selected.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
 

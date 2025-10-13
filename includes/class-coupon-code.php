@@ -19,7 +19,7 @@ class Coupon_Code
      *
      * @return string|bool The generated coupon code on success, or false on failure.
      */
-    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 7, $maximum_amount = 0)
+    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 7, $maximum_amount = 0, $category_slug = null, $limit_usage_to_x_items = 0)
     {
 
         // Ensure WooCommerce is active and required classes are available.
@@ -65,6 +65,14 @@ class Coupon_Code
         // Set usage limits
         $coupon->set_usage_limit(1); // Can only be used once in total
         $coupon->set_usage_limit_per_user(1); // Each user can only use it once
+
+        if ($limit_usage_to_x_items > 0) {
+            $coupon->set_limit_usage_to_x_items($limit_usage_to_x_items);
+        }
+
+        if ($category_slug && !empty(trim($category_slug))) {
+            $coupon->set_product_categories(array(get_term_by('slug', $category_slug, 'product_cat')->term_id));
+        }
 
 
         // Save the coupon
