@@ -43,4 +43,4 @@ require_once SWN_DELUXE_PLUGIN_DIR . 'includes/class-init.php';
  * Activation & deactivation hooks
  */
 register_activation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'create_tables']);
-register_deactivation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'delete_tables']);
+// register_deactivation_hook(SWN_DELUXE_PLUGIN_FILE, ['\SWN_Deluxe\DB', 'delete_tables']);
