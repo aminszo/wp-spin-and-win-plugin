@@ -52,9 +52,9 @@ class Coupon_Code
         $coupon->set_discount_type($discount_type);
         $coupon->set_description($description ?: 'Coupon won from Spin & Win game.');
 
-        if ($maximum_amount > 0) {
-            $coupon->set_maximum_amount($maximum_amount);
-        }
+        // if ($maximum_amount > 0) {
+        //     $coupon->set_maximum_amount($maximum_amount);
+        // }
         // Set expiry date
         if ($expiry_days > 0) {
             $expiry_date = new \DateTime();
@@ -77,6 +77,10 @@ class Coupon_Code
 
         // Save the coupon
         $coupon_id = $coupon->save();
+
+        if ($coupon_id && $maximum_amount > 0) {
+            update_post_meta($coupon_id, 'max_discount_amount', $maximum_amount);
+        }
 
         if ($coupon_id) {
             return $coupon_code;

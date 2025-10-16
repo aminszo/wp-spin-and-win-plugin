@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 
 $editing_item = isset($_GET['item_id']) ? Wheel_Items::get(intval($_GET['item_id'])) : null;
 $options = $editing_item ? json_decode($editing_item->options, true) : [];
-var_dump($options);
+// var_dump($options);
 ?>
 <div class="wrap">
     <h1 class="wp-heading-inline">
