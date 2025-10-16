@@ -32,7 +32,7 @@ class Shortcode
         wp_enqueue_style('sweetalert-css', SWN_DELUXE_PLUGIN_URL . 'assets/css/sweetalert2.min.css', [], '11.22.0');
         wp_enqueue_script('sweetalert-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/sweetalert2@11.js', [], null, true);
         wp_enqueue_style('swn-frontend-css', SWN_DELUXE_PLUGIN_URL . 'assets/css/swn-frontend.css', [], SWN_DELUXE_VERSION);
-        wp_enqueue_script('swn-frontend-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/swn-frontend.js', ['jquery', 'winwheel-js'], SWN_DELUXE_VERSION, true);
+        wp_enqueue_script('swn-frontend-js', SWN_DELUXE_PLUGIN_URL . 'assets/js/swn-frontend.js', ['jquery', 'winwheel-js'], "2.0.110", true);
     }
 
     /**

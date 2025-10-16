@@ -11,7 +11,7 @@
     </div>
 
     <?php if (! is_user_logged_in()) : ?>
-        <div class="swn-not-logged-in">';
+        <div class="swn-not-logged-in" style="text-align: center;">
             <p>
                 <?= __('Please log in to spin the wheel!', 'swn-deluxe') ?>
             </p>
@@ -19,8 +19,8 @@
                 <?= __('Login or Signup', 'swn-deluxe') ?>
             </a>
         </div>
+    <?php else : ?>
+        <div id="swn-message-area" class="swn-message-area"></div>
+        <p class="swn-spin-chances"><?php printf(__('Remaining spin chances: %d', 'swn-deluxe'), $spin_chances); ?></p>
     <?php endif; ?>
-
-    <div id="swn-message-area" class="swn-message-area"></div>
-    <p class="swn-spin-chances"><?php printf(__('Remaining spin chances: %d', 'swn-deluxe'), $spin_chances); ?></p>
 </div>
