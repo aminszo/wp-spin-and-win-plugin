@@ -135,6 +135,7 @@ class Prize_Fulfillment
 
             $sms_variables = [
                 'coupon-code' => $coupon_code,
+                'expiry-days' => $options['expiry_days'],
             ];
 
             $result['sms'] = [
