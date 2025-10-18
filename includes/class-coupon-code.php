@@ -19,7 +19,7 @@ class Coupon_Code
      *
      * @return string|bool The generated coupon code on success, or false on failure.
      */
-    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 7, $maximum_amount = 0, $category_slug = null, $limit_usage_to_x_items = 0)
+    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 7, $maximum_amount = 0, $category_slug = null, $limit_usage_to_x_items = 0, $for_first_order_only = false)
     {
 
         // Ensure WooCommerce is active and required classes are available.
@@ -80,6 +80,10 @@ class Coupon_Code
 
         if ($coupon_id && $maximum_amount > 0) {
             update_post_meta($coupon_id, 'max_discount_amount', $maximum_amount);
+        }
+
+        if ($coupon_id && true === $for_first_order_only) {
+            update_post_meta($coupon_id, 'is_first_order_only', 'yes');
         }
 
         if ($coupon_id) {

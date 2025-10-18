@@ -112,6 +112,7 @@ class Prize_Fulfillment
             $coupon_code_expiry_days = $options['expiry_days'];
             $product_category = $options['product_category'];
             $coupon_code_x_items = sanitize_text_field($options['count']);
+            $first_order_only = $options['first_order'];
 
             $coupon_code = Coupon_Code::generate_coupon(
                 $coupon_code_percent,
@@ -120,7 +121,8 @@ class Prize_Fulfillment
                 $coupon_code_expiry_days,
                 $coupon_code_maximum_amount,
                 $product_category,
-                $coupon_code_x_items
+                $coupon_code_x_items,
+                $first_order_only
             );
 
             if ($coupon_code) {
