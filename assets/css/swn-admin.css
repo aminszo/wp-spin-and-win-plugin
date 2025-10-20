@@ -1,0 +1,37 @@
+/* Danger Zone Container */
+.swn-danger-zone {
+    border: 1px solid #d63638;
+    background-color: #ffe5e5;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 4px;
+}
+
+.swn-danger-zone h2 {
+    color: #d63638;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.swn-danger-zone p {
+    color: #a00;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Danger Button */
+.swn-danger-zone input[type="submit"] {
+    background-color: #d63638;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.swn-danger-zone input[type="submit"]:hover {
+    background-color: #a00;
+    color: #fff;
+}

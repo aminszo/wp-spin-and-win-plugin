@@ -1,6 +1,3 @@
-<?php
-
-?>
 <div id="swn-wheel-container" class="swn-wheel-container">
     <div class="swn-wheel-wrapper">
         <!-- <img id="swn-pin-image"src="<?php echo SWN_DELUXE_PLUGIN_URL . 'assets/image/pin.png'; ?>," alt=""> -->
@@ -13,14 +10,17 @@
         <button id="swn-spin-trigger" alt="<?php _e('Spin the Wheel', 'swn-deluxe'); ?>"><?php _e('Spin', 'swn-deluxe') ?></button>
     </div>
 
-    <?php
-    if (! is_user_logged_in()) {
-        echo '<div class="swn-not-logged-in">';
-        echo '<p>' . __('Please log in to spin the wheel!', 'swn-deluxe') . '</p>';
-        echo '<a href="?login=true&type=login&back=swn" onclick="jQuery(\'this\').digits_login_modal(jQuery(this));return false;" attr-disclick="1" class="digits-login-modal" type="1">' . __('Login or Signup', 'swn-deluxe') . '</a>';
-        echo '</div>';
-    }
-    ?>
-    <div id="swn-message-area" class="swn-message-area"></div>
-    <p class="swn-spin-chances"><?php printf(__('Remaining spin chances: %d', 'swn-deluxe'), $spin_chances); ?></p>
+    <?php if (! is_user_logged_in()) : ?>
+        <div class="swn-not-logged-in" style="text-align: center;">
+            <p>
+                <?= __('Please log in to spin the wheel!', 'swn-deluxe') ?>
+            </p>
+            <a href="?login=true&type=login&back=swn" onclick="jQuery('this').digits_login_modal(jQuery(this));return false;" attr-disclick="1" class="digits-login-modal" type="1">
+                <?= __('Login or Signup', 'swn-deluxe') ?>
+            </a>
+        </div>
+    <?php else : ?>
+        <div id="swn-message-area" class="swn-message-area"></div>
+        <p class="swn-spin-chances"><?php printf(__('Remaining spin chances: %d', 'swn-deluxe'), $spin_chances); ?></p>
+    <?php endif; ?>
 </div>
