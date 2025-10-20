@@ -117,6 +117,7 @@ class Admin_Wheel_Items
                     $options['count'] = intval($_POST['count'] ?? 1);
                     $options['product_category'] = sanitize_text_field($_POST['product_category']);
                     $options['first_order'] =  sanitize_text_field($_POST['first_order']) === "true";
+                    $options['individual_use'] =  sanitize_text_field($_POST['individual_use']) === "true";
                     break;
 
                 case 'credit':

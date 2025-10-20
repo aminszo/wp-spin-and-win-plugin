@@ -113,6 +113,7 @@ class Prize_Fulfillment
             $product_category = $options['product_category'];
             $coupon_code_x_items = sanitize_text_field($options['count']);
             $first_order_only = $options['first_order'];
+            $individual_use = $options['individual_use'];
 
             $coupon_code = Coupon_Code::generate_coupon(
                 $coupon_code_percent,
@@ -122,7 +123,8 @@ class Prize_Fulfillment
                 $coupon_code_maximum_amount,
                 $product_category,
                 $coupon_code_x_items,
-                $first_order_only
+                $first_order_only,
+                $individual_use
             );
 
             if ($coupon_code) {

@@ -124,6 +124,14 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 </td>
             </tr>
 
+            <tr class="field-coupon type-field">
+                <th scope="row"><label for="individual_use"><?php _e('individual_use', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="checkbox" name="individual_use" id="individual_use" value="true" <?php checked(true, $options['individual_use']) ?> />
+                    <p class="description"><?php _e('Is this only limited to individual_use?', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+
             <tr class="field-free-product field-coupon type-field">
                 <th scope="row"><label for="count"><?php _e('Product Count', 'swn-deluxe'); ?></label></th>
                 <td>

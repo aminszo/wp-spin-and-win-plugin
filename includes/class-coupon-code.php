@@ -19,8 +19,17 @@ class Coupon_Code
      *
      * @return string|bool The generated coupon code on success, or false on failure.
      */
-    public static function generate_coupon($amount, $discount_type = 'percent', $description = '', $expiry_days = 7, $maximum_amount = 0, $category_slug = null, $limit_usage_to_x_items = 0, $for_first_order_only = false)
-    {
+    public static function generate_coupon(
+        $amount,
+        $discount_type = 'percent',
+        $description = '',
+        $expiry_days = 7,
+        $maximum_amount = 0,
+        $category_slug = null,
+        $limit_usage_to_x_items = 0,
+        $for_first_order_only = false,
+        $individual_use = false
+    ) {
 
         // Ensure WooCommerce is active and required classes are available.
         if (! class_exists('\WC_Coupon')) {
@@ -51,10 +60,12 @@ class Coupon_Code
         $coupon->set_amount($amount);
         $coupon->set_discount_type($discount_type);
         $coupon->set_description($description ?: 'Coupon won from Spin & Win game.');
+        $coupon->set_individual_use($individual_use);
 
         // if ($maximum_amount > 0) {
         //     $coupon->set_maximum_amount($maximum_amount);
         // }
+        
         // Set expiry date
         if ($expiry_days > 0) {
             $expiry_date = new \DateTime();
