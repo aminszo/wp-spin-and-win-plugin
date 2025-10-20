@@ -156,6 +156,34 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
                 </td>
             </tr>
 
+
+        </table>
+
+        <hr>
+
+        <table class="form-table">
+            <h2><?php _e('display results settings') ?></h2>
+            <tr>
+                <th><label for="popup-title"><?php _e('popup-title', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="text" name="popup-title" id="popup-title" value="<?php echo $editing_item ? esc_attr($editing_item->name) : ''; ?>" class="regular-text" required>
+                    <p class="description"><?php _e('Internal identifier for the wheel item. Not shown to users, used only for management.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="popup-sub-heading"><?php _e('popup-sub-heading', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <input type="text" name="popup-sub-heading" id="popup-sub-heading" value="<?php echo $editing_item ? esc_attr($editing_item->name) : ''; ?>" class="regular-text" required>
+                    <p class="description"><?php _e('Internal identifier for the wheel item. Not shown to users, used only for management.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="popup-description"><?php _e('popup-description', 'swn-deluxe'); ?></label></th>
+                <td>
+                    <textarea name="popup-description" id="popup-description" class="large-text" required><?php echo $options['popup-description'] ?? ''; ?></textarea>
+                    <p class="description"><?php _e('Internal identifier for the wheel item. Not shown to users, used only for management.', 'swn-deluxe'); ?></p>
+                </td>
+            </tr>
         </table>
 
         <?php submit_button($editing_item ? __('Update Item', 'swn-deluxe') : __('Add Item', 'swn-deluxe'), 'primary', 'swn_save_item'); ?>

@@ -263,7 +263,8 @@ jQuery(document).ready(function ($) {
                         theWheel.userData = {
                             prize_name: response.data.prize.display_name,
                             prize_details: response.data.prize_details,
-                            message: response.data.message
+                            message: response.data.message,
+                            description: response.data.description
                         };
                         theWheel.startAnimation();
                     } else {
@@ -314,11 +315,18 @@ jQuery(document).ready(function ($) {
         if (theWheel.userData) {
             // Show SweetAlert with details
             messageArea.html('<h3>' + 'شما برنده ' + theWheel.userData.prize_name + ' شدید.' + '</h3><p>' + theWheel.userData.prize_details + '</p>').addClass('swn-success');
+
             let winning_text = (swn_params.win_message || 'You won: %s').replace('%s', indicatedSegment.text) + '<br/>' + theWheel.userData.prize_details;
+
+            console.log(theWheel.userData);
+            let finalstr = theWheel.userData.description;
+            finalstr = (finalstr + '').replace(/\r?\n/g, "<br>")
+            
+
             Swal.fire({
                 icon: "success",
                 title: "تبریک",
-                html: winning_text,
+                html: finalstr,
                 confirmButtonText: "تایید",
                 didOpen: () => {
                     // Reset and play the sound

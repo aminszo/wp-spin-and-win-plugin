@@ -51,13 +51,16 @@ class Spin_Handler
 
         Spin_Chance::decrement($wheel_id, $user_id, null);
 
+        $options = json_decode($prize->options, true) ?: [];
+
         return [
             'success' => true,
             'data' => [
                 'message' => __('you won a prize', 'swn-deluxe'),
                 'prize' => $prize,
                 'prize_details' => $prize_awarded_details,
-                'remaining_spins' => Spin_Chance::remaining($wheel_id, $user_id, null)
+                'remaining_spins' => Spin_Chance::remaining($wheel_id, $user_id, null),
+                'description' => $result['description']
             ]
         ];
     }

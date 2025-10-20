@@ -137,6 +137,12 @@ class Prize_Fulfillment
             }
             $result['details'] = sprintf(__('Coupon Code: %s', 'swn-deluxe'), $coupon_code);
 
+
+            $popup_description = $options['popup-description'];
+            $popup_description = str_replace('%coupon-code%', $coupon_code, $popup_description);
+
+            $result['description'] = $popup_description;
+
             $sms_variables = [
                 'coupon-code' => $coupon_code,
                 'expiry-days' => $options['expiry_days'],
