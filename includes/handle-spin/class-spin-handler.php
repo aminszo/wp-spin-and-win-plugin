@@ -44,9 +44,9 @@ class Spin_Handler
         $sms_variables = $result['sms']['variables'];
 
         if ($sms_patern_code && $sms_variables) {
-            // SMS::init();
-            // $phone = SMS::get_user_phone($user_id);
-            // SMS::send_with_pattern($phone, $sms_patern_code, $sms_variables, $user_id);
+            SMS::init();
+            $phone = SMS::get_user_phone($user_id);
+            SMS::send_with_pattern($phone, $sms_patern_code, $sms_variables, $user_id);
         }
 
         Spin_Chance::decrement($wheel_id, $user_id, null);
@@ -60,6 +60,8 @@ class Spin_Handler
                 'prize' => $prize,
                 'prize_details' => $prize_awarded_details,
                 'remaining_spins' => Spin_Chance::remaining($wheel_id, $user_id, null),
+                'title' => $result['title'],
+                'heading' => $result['heading'],
                 'description' => $result['description']
             ]
         ];

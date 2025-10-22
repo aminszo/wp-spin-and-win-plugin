@@ -261,9 +261,12 @@ jQuery(document).ready(function ($) {
 
                         // Store prize data to show after animation
                         theWheel.userData = {
+                            prize_type: response.data.prize.type,
                             prize_name: response.data.prize.display_name,
                             prize_details: response.data.prize_details,
                             message: response.data.message,
+                            title: response.data.title,
+                            heading: response.data.heading,
                             description: response.data.description
                         };
                         theWheel.startAnimation();
@@ -314,18 +317,19 @@ jQuery(document).ready(function ($) {
 
         if (theWheel.userData) {
             // Show SweetAlert with details
-            messageArea.html('<h3>' + 'شما برنده ' + theWheel.userData.prize_name + ' شدید.' + '</h3><p>' + theWheel.userData.prize_details + '</p>').addClass('swn-success');
-
-            let winning_text = (swn_params.win_message || 'You won: %s').replace('%s', indicatedSegment.text) + '<br/>' + theWheel.userData.prize_details;
-
-            console.log(theWheel.userData);
-            let finalstr = theWheel.userData.description;
-            finalstr = (finalstr + '').replace(/\r?\n/g, "<br>")
             
+            let winning_text = (swn_params.win_message || 'You won: %s').replace('%s', indicatedSegment.text) + '<br/>' + theWheel.userData.prize_details;
+            
+            console.log(theWheel.userData);
+            let finalstr = theWheel.userData.heading + '\n\n' + theWheel.userData.description ;
+            finalstr = (finalstr + '').replace(/\r?\n/g, "<br>")
 
+            messageArea.html('<h3>' + theWheel.userData.heading + '</h3><p>' + theWheel.userData.description.replace(/\r?\n/g, "<br>") + '</p>').addClass('swn-success');
+            
+            const popup_icon = (theWheel.userData.prize_type == 'nothing') ? 'info' : 'success';
             Swal.fire({
-                icon: "success",
-                title: "تبریک",
+                icon: popup_icon,
+                title: theWheel.userData.title,
                 html: finalstr,
                 confirmButtonText: "تایید",
                 didOpen: () => {

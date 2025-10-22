@@ -118,7 +118,6 @@ class Admin_Wheel_Items
                     $options['product_category'] = sanitize_text_field($_POST['product_category']);
                     $options['first_order'] =  sanitize_text_field($_POST['first_order']) === "true";
                     $options['individual_use'] = sanitize_text_field($_POST['individual_use']) === "true";
-                    $options['popup-description'] = $_POST['popup-description'];
                     break;
 
                 case 'credit':
@@ -130,6 +129,10 @@ class Admin_Wheel_Items
                     $options['product_category'] = sanitize_text_field($_POST['product_category']);
                     break;
             }
+
+            $options['popup-title'] = $_POST['popup-title'];
+            $options['popup-sub-heading'] = $_POST['popup-sub-heading'];
+            $options['popup-description'] = $_POST['popup-description'];
 
             $data = [
                 'wheel_id'      => $wheel_id,

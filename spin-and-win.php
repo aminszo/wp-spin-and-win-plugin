@@ -4,7 +4,7 @@
  * Plugin Name:       Spin and Win Deluxe
  * Plugin URI:        https://aminlog.ir/wp-plugins/spin-and-win
  * Description:       Adds customizable spin-the-wheel games. Engage users with interactive prize wheels.
- * Version:           1.0.0
+ * Version:           2.0.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Amin Salehizade

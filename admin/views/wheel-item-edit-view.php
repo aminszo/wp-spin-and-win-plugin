@@ -166,14 +166,14 @@ $options = $editing_item ? json_decode($editing_item->options, true) : [];
             <tr>
                 <th><label for="popup-title"><?php _e('popup-title', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="text" name="popup-title" id="popup-title" value="<?php echo $editing_item ? esc_attr($editing_item->name) : ''; ?>" class="regular-text" required>
+                    <input type="text" name="popup-title" id="popup-title" value="<?php echo $options['popup-title'] ?? ''; ?>" class="regular-text" required>
                     <p class="description"><?php _e('Internal identifier for the wheel item. Not shown to users, used only for management.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>
             <tr>
                 <th><label for="popup-sub-heading"><?php _e('popup-sub-heading', 'swn-deluxe'); ?></label></th>
                 <td>
-                    <input type="text" name="popup-sub-heading" id="popup-sub-heading" value="<?php echo $editing_item ? esc_attr($editing_item->name) : ''; ?>" class="regular-text" required>
+                    <input type="text" name="popup-sub-heading" id="popup-sub-heading" value="<?php echo $options['popup-sub-heading'] ?? ''; ?>" class="regular-text">
                     <p class="description"><?php _e('Internal identifier for the wheel item. Not shown to users, used only for management.', 'swn-deluxe'); ?></p>
                 </td>
             </tr>

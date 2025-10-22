@@ -26,6 +26,11 @@ class Prize_Fulfillment
 
             case 'nothing':
             default:
+                $options = json_decode($prize->options, true) ?: [];
+
+                $result['title'] = $options['popup-title'];
+                $result['heading'] = $options['popup-sub-heading'];
+                $result['description'] = $options['popup-description'];
                 $result['details'] = __('Better luck next time!', 'swn-deluxe');
                 break;
         }
@@ -141,11 +146,13 @@ class Prize_Fulfillment
             $popup_description = $options['popup-description'];
             $popup_description = str_replace('%coupon-code%', $coupon_code, $popup_description);
 
+            $result['title'] = $options['popup-title'];
+            $result['heading'] = $options['popup-sub-heading'];
             $result['description'] = $popup_description;
 
             $sms_variables = [
-                'coupon-code' => $coupon_code,
-                'expiry-days' => $options['expiry_days'],
+                'coupon' => $coupon_code,
+                'expiry_days' => $options['expiry_days'],
             ];
 
             $result['sms'] = [
